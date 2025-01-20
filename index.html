@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <title>Strumenti AI & Riferimenti</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Una raccolta curata di strumenti e risorse per l'intelligenza artificiale">
     <style>
         :root {
             --primary: #2a4365;
@@ -10,6 +11,8 @@
             --background: #f7fafc;
             --card: #ffffff;
             --text: #2d3748;
+            --hover: #ebf8ff;
+            --tag: #e2e8f0;
         }
 
         body {
@@ -22,7 +25,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -41,12 +44,34 @@
         .subtitle {
             color: var(--text);
             opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--tag);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
             padding: 20px 0;
         }
 
@@ -55,11 +80,12 @@
             border-radius: 12px;
             padding: 25px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card h2 {
@@ -68,6 +94,9 @@
             font-size: 1.5rem;
             border-bottom: 2px solid var(--background);
             padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .card ul {
@@ -76,13 +105,22 @@
         }
 
         .card li {
-            margin: 15px 0;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .card li:hover {
+            background-color: var(--hover);
         }
 
         .card a {
             color: var(--secondary);
             text-decoration: none;
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-weight: 500;
             transition: color 0.2s ease;
         }
@@ -95,7 +133,54 @@
             color: var(--text);
             opacity: 0.8;
             font-size: 0.9rem;
-            margin-top: 5px;
+            margin-top: 8px;
+            padding-left: 24px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--tag);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-top: 8px;
+            margin-right: 4px;
+        }
+
+        .resource-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+            padding-left: 24px;
+            font-size: 0.8rem;
+            color: var(--text);
+            opacity: 0.6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid var(--tag);
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
         }
 
         @media (max-width: 600px) {
@@ -106,6 +191,21 @@
             h1 {
                 font-size: 2rem;
             }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dark mode styles */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #1a202c;
+                --card: #2d3748;
+                --text: #f7fafc;
+                --hover: #2a4365;
+                --tag: #4a5568;
+            }
         }
     </style>
 </head>
@@ -113,76 +213,167 @@
     <div class="container">
         <header>
             <h1>Strumenti AI & Riferimenti</h1>
-            <p class="subtitle">Una raccolta di risorse utili sull'AI</p>
+            <p class="subtitle">Una raccolta curata di strumenti, risorse e riferimenti per esplorare il mondo dell'intelligenza artificiale</p>
         </header>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Cerca strumenti e risorse..." id="search">
+        </div>
 
         <div class="grid">
             <div class="card">
-                <h2>Language Models</h2>
+                <h2>📱 Language Models</h2>
                 <ul>
                     <li>
-                        <a href="https://chat.openai.com">ChatGPT</a>
-                        <div class="description">Il chatbot di OpenAI</div>
+                        <a href="https://chat.openai.com" target="_blank" rel="noopener">
+                            <span>ChatGPT</span>
+                            <span class="tag">Gratuito/Premium</span>
+                        </a>
+                        <div class="description">Il chatbot di OpenAI - leader nel settore del language processing</div>
+                        <div class="resource-meta">Ultimo aggiornamento: GPT-4</div>
                     </li>
                     <li>
-                        <a href="https://claude.ai">Claude</a>
-                        <div class="description">Il chatbot di Anthropic</div>
+                        <a href="https://claude.ai" target="_blank" rel="noopener">
+                            <span>Claude</span>
+                            <span class="tag">Gratuito</span>
+                        </a>
+                        <div class="description">Il chatbot di Anthropic con capacità di analisi e scrittura avanzate</div>
+                        <div class="resource-meta">Ultimo aggiornamento: Claude 3</div>
                     </li>
                     <li>
-                        <a href="https://bard.google.com">Gemini</a>
-                        <div class="description">Il chatbot di Google</div>
+                        <a href="https://bard.google.com" target="_blank" rel="noopener">
+                            <span>Gemini</span>
+                            <span class="tag">Gratuito</span>
+                        </a>
+                        <div class="description">Il chatbot di Google con integrazione dei servizi Google</div>
+                        <div class="resource-meta">Ultimo aggiornamento: Gemini Pro</div>
                     </li>
                 </ul>
             </div>
 
             <div class="card">
-                <h2>Strumenti AI</h2>
+                <h2>🎨 Strumenti AI</h2>
                 <ul>
                     <li>
-                        <a href="https://midjourney.com">Midjourney</a>
+                        <a href="https://midjourney.com" target="_blank" rel="noopener">
+                            <span>Midjourney</span>
+                            <span class="tag">Premium</span>
+                        </a>
                         <div class="description">Generazione di immagini AI avanzata tramite Discord</div>
+                        <div class="resource-meta">Versione: V6</div>
                     </li>
                     <li>
-                        <a href="https://www.copy.ai">Copy.ai</a>
-                        <div class="description">Scrittura e generazione di contenuti tramite AI</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>Risorse per l'apprendimento</h2>
-                <ul>
-                    <li>
-                        <a href="https://course.fast.ai">Fast.ai</a>
-                        <div class="description">Deep Learning pratico per sviluppatori</div>
+                        <a href="https://labs.openai.com" target="_blank" rel="noopener">
+                            <span>DALL-E</span>
+                            <span class="tag">Crediti</span>
+                        </a>
+                        <div class="description">Generazione di immagini AI di OpenAI con stile artistico unico</div>
+                        <div class="resource-meta">Versione: DALL-E 3</div>
                     </li>
                     <li>
-                        <a href="https://www.deeplearning.ai">DeepLearning.AI</a>
-                        <div class="description">Corsi e specializzazioni complete in AI</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>Varie</h2>
-                <ul>
-                    <li>
-                        <a href="https://thispersondoesnotexist.com/">thisisnotaperson.com</a>
-                        <div class="description">Generatore di volti di persone che non esistono</div>
+                        <a href="https://stablediffusionweb.com" target="_blank" rel="noopener">
+                            <span>Stable Diffusion</span>
+                            <span class="tag">Open Source</span>
+                        </a>
+                        <div class="description">Generazione di immagini AI open source personalizzabile</div>
+                        <div class="resource-meta">Versione: 2.1</div>
                     </li>
                 </ul>
             </div>
 
             <div class="card">
-                <h2>Scarica risorse</h2>
+                <h2>📚 Risorse per l'apprendimento</h2>
                 <ul>
                     <li>
-                        <a href="yourfile.pdf" download>Scarica PDF</a>
-                        <div class="description">Clicca per scaricare il file PDF.</div>
+                        <a href="https://course.fast.ai" target="_blank" rel="noopener">
+                            <span>Fast.ai</span>
+                            <span class="tag">Gratuito</span>
+                        </a>
+                        <div class="description">Deep Learning pratico per sviluppatori con approccio top-down</div>
+                        <div class="resource-meta">Corso aggiornato 2024</div>
+                    </li>
+                    <li>
+                        <a href="https://huggingface.co/learn" target="_blank" rel="noopener">
+                            <span>Hugging Face</span>
+                            <span class="tag">Gratuito</span>
+                        </a>
+                        <div class="description">Piattaforma per l'apprendimento e condivisione di modelli AI con vasta community</div>
+                        <div class="resource-meta">+10,000 modelli disponibili</div>
+                    </li>
+                    <li>
+                        <a href="https://www.tensorflow.org/learn" target="_blank" rel="noopener">
+                            <span>TensorFlow</span>
+                            <span class="tag">Gratuito</span>
+                        </a>
+                        <div class="description">Framework per machine learning di Google con ampia documentazione</div>
+                        <div class="resource-meta">Supporto GPU/TPU</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🔧 Strumenti Utili</h2>
+                <ul>
+                    <li>
+                        <a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener">
+                            <span>This Person Does Not Exist</span>
+                            <span class="tag">Gratuito</span>
+                        </a>
+                        <div class="description">Generatore di volti realistici ma completamente artificiali</div>
+                        <div class="resource-meta">Basato su StyleGAN2</div>
+                    </li>
+                    <li>
+                        <a href="https://regex.ai" target="_blank" rel="noopener">
+                            <span>Regex.ai</span>
+                            <span class="tag">Gratuito</span>
+                        </a>
+                        <div class="description">Generatore di espressioni regolari assistito da AI</div>
+                        <div class="resource-meta">Pattern matching intelligente</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>📥 Risorse Scaricabili</h2>
+                <ul>
+                    <li>
+                        <a href="yourfile.pdf" download>
+                            <span>Presentazione AI Tools</span>
+                            <span class="tag">PDF</span>
+                        </a>
+                        <div class="description">File della presentazione</div>
+                        <div class="resource-meta">Ultima versione: Gennaio 2024</div>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
+
+        <footer>
+            <p>© 2024 Strumenti AI & Riferimenti - Aggiornato regolarmente con nuovi strumenti e risorse</p>
+        </footer>
+
+    <button class="dark-mode-toggle" id="darkModeToggle">🌓</button>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('search');
+        const cards = document.querySelectorAll('.card li');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>

@@ -278,6 +278,13 @@
                         <div class="description">Generazione di immagini AI open source personalizzabile</div>
                         <div class="resource-meta">Versione: 2.1</div>
                     </li>
+                    <li>
+                        <a href="https://google-research.github.io/seanet/musiclm/examples/" target="_blank" rel="noopener">
+                            <span>MusicLM</span>
+                            <span class="tag">Open Source</span>
+                        </a>
+                        <div class="description">Esempi di generazione di musica da prompt testuale</div>
+                    </li>
                 </ul>
             </div>
 
@@ -322,14 +329,6 @@
                         <div class="description">Generatore di volti realistici ma completamente artificiali</div>
                         <div class="resource-meta">Basato su StyleGAN2</div>
                     </li>
-                    <li>
-                        <a href="https://regex.ai" target="_blank" rel="noopener">
-                            <span>Regex.ai</span>
-                            <span class="tag">Gratuito</span>
-                        </a>
-                        <div class="description">Generatore di espressioni regolari assistito da AI</div>
-                        <div class="resource-meta">Pattern matching intelligente</div>
-                    </li>
                 </ul>
             </div>
 
@@ -338,7 +337,7 @@
                 <ul>
                     <li>
                         <a href="yourfile.pdf" download>
-                            <span>Presentazione AI Tools</span>
+                            <span>Presentazione prima serata sull'IA</span>
                             <span class="tag">PDF</span>
                         </a>
                         <div class="description">File della presentazione</div>
@@ -352,8 +351,6 @@
             <p>© 2024 Strumenti AI & Riferimenti - Aggiornato regolarmente con nuovi strumenti e risorse</p>
         </footer>
 
-    <button class="dark-mode-toggle" id="darkModeToggle">🌓</button>
-
     <script>
         // Search functionality
         const searchInput = document.getElementById('search');
@@ -366,13 +363,6 @@
                 const text = card.textContent.toLowerCase();
                 card.style.display = text.includes(searchTerm) ? '' : 'none';
             });
-        });
-
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
         });
     </script>
 </body>

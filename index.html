@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Strumenti AI & Riferimenti</title>
+    <title>Corso Formazione Politica Culturale 2025</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Una raccolta di strumenti e risorse per l'intelligenza artificiale">
+    <meta name="description" content="Ciclo di serate su temi di attualità e riflessione">
     <style>
         :root {
             --primary: #2a4365;
@@ -13,9 +13,14 @@
             --text: #2d3748;
             --hover: #ebf8ff;
             --tag: #e2e8f0;
+            --disabled: #cccccc;
         }
 
         body {
+            background-image: url('file:///C:/Users/mcormio/Downloads/bg-corso2.png');
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             background-color: var(--background);
             color: var(--text);
@@ -29,16 +34,79 @@
             margin: 0 auto;
         }
 
+        /* Evening Event Styles */
+        .evening {
+            background: var(--card);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .evening-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .evening-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .evening-content {
+            display: none;
+        }
+
+        .evening-content.active {
+            display: block;
+        }
+
+        .evening.disabled .evening-header {
+            background-color: var(--disabled);
+            cursor: not-allowed;
+        }
+
+        .evening.disabled .evening-header h2 {
+            opacity: 0.5;
+        }
+
+        .speakers {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Header Styles */
         header {
             text-align: center;
-            padding: 40px 0;
-            margin-bottom: 40px;
+            padding: 10px;
+            margin-bottom: 10px;
         }
 
         h1 {
             color: var(--primary);
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0;
+            user-select: none;
+        }
+
+        h2 {
+            user-select: none;
+            margin-top: 0;
+        }
+
+        .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+            supported by Chrome, Edge, Opera and Firefox */
         }
 
         .subtitle {
@@ -48,9 +116,10 @@
             margin: 0 auto;
         }
 
+        /* Search Styles */
         .search-container {
             margin: 20px auto;
-            max-width: 600px;
+            max-width: 50%;
             padding: 0 20px;
         }
 
@@ -68,17 +137,19 @@
             border-color: var(--secondary);
         }
 
+        /* Grid Styles */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            padding: 20px 0;
+            padding: 25px 0;
         }
 
         .card {
             background: var(--card);
             border-radius: 12px;
-            padding: 25px;
+            padding: 20px;
+            margin: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
@@ -165,24 +236,7 @@
             border-top: 1px solid var(--tag);
         }
 
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s ease;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
+        /* Responsive Adjustments */
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -195,9 +249,14 @@
             .grid {
                 grid-template-columns: 1fr;
             }
+
+            .evening-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
-        /* Dark mode styles */
+        /* Dark Mode */
         @media (prefers-color-scheme: dark) {
             :root {
                 --background: #1a202c;
@@ -211,167 +270,266 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Strumenti AI & Riferimenti</h1>
-            <p class="subtitle">Una raccolta di strumenti, risorse e riferimenti per esplorare il mondo dell'intelligenza artificiale</p>
-        </header>
+        <h1 style="text-align: center; color: var(--primary);">CORSO DI FORMAZIONE POLITICA E CULTURALE</h1>
+        <h2 style="text-align: center; color: var(--primary);">Terza edizione 2025</h2>
 
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Cerca strumenti e risorse..." id="search">
+        <div class="evening">
+            <div class="evening-header" onclick="toggleContent(this)">
+                <div>
+                    <h2>20 Gennaio - Introduzione all'intelligenza artificiale</h2>
+                    <div class="speakers noselect">Con Don Stefano Cucchetti e Marco Cormio</div>
+                </div>
+            </div>
+            <div class="evening-content active">
+                <div class="container">
+                    <header>
+                        <h1>Strumenti AI & Riferimenti</h1>
+                        <p class="subtitle noselect">Una raccolta di strumenti, risorse e riferimenti per esplorare il mondo dell'intelligenza artificiale</p>
+                    </header>
+            
+                    <div class="search-container">
+                        <input type="text" class="search-input  noselect" placeholder="Cerca strumenti e risorse..." id="search">
+                    </div>
+            
+                    <div class="grid">
+                        <div class="card">
+                            <h2>📱 Language Models</h2>
+                            <ul>
+                                <li>
+                                    <a href="https://chat.openai.com" target="_blank" rel="noopener">
+                                        <span class="noselect">ChatGPT</span>
+                                        <span class="tag noselect">Gratuito/Premium</span>
+                                    </a>
+                                    <div class="description noselect">Il chatbot di OpenAI - leader nel settore del language processing</div>
+                                    <div class="resource-meta noselect">Ultimo aggiornamento: GPT-4</div>
+                                </li>
+                                <li>
+                                    <a href="https://claude.ai" target="_blank" rel="noopener">
+                                        <span class="noselect">Claude</span>
+                                        <span class="tag noselect">Gratuito</span>
+                                    </a>
+                                    <div class="description noselect">Il chatbot di Anthropic con capacità di analisi e scrittura avanzate</div>
+                                    <div class="resource-meta noselect">Ultimo aggiornamento: Claude 3</div>
+                                </li>
+                                <li>
+                                    <a href="https://bard.google.com" target="_blank" rel="noopener">
+                                        <span class="noselect">Gemini</span>
+                                        <span class="tag noselect">Gratuito</span>
+                                    </a>
+                                    <div class="description noselect">Il chatbot di Google con integrazione dei servizi Google</div>
+                                    <div class="resource-meta noselect">Ultimo aggiornamento: Gemini Pro</div>
+                                </li>
+                            </ul>
+                        </div>
+            
+                        <div class="card">
+                            <h2>🎨 Strumenti artistici</h2>
+                            <ul>
+                                <li>
+                                    <a href="https://midjourney.com" target="_blank" rel="noopener">
+                                        <span class="noselect">Midjourney</span>
+                                        <span class="tag noselect">Premium</span>
+                                    </a>
+                                    <div class="description noselect">Generazione di immagini AI avanzata tramite Discord</div>
+                                    <div class="resource-meta noselect">Versione: V6</div>
+                                </li>
+                                <li>
+                                    <a href="https://labs.openai.com" target="_blank" rel="noopener">
+                                        <span class="noselect">DALL-E</span>
+                                        <span class="tag noselect">Crediti</span>
+                                    </a>
+                                    <div class="description noselect">Generazione di immagini AI di OpenAI con stile artistico unico</div>
+                                    <div class="resource-meta noselect">Versione: DALL-E 3</div>
+                                </li>
+                                <li>
+                                    <a href="https://stablediffusionweb.com" target="_blank" rel="noopener">
+                                        <span class="noselect">Stable Diffusion</span>
+                                        <span class="tag noselect">Open Source</span>
+                                    </a>
+                                    <div class="description noselect">Generazione di immagini AI open source personalizzabile</div>
+                                    <div class="resource-meta noselect">Versione: 2.1</div>
+                                </li>
+                                <li>
+                                    <a href="https://google-research.github.io/seanet/musiclm/examples/" target="_blank" rel="noopener">
+                                        <span class="noselect">MusicLM</span>
+                                        <span class="tag noselect">Open Source</span>
+                                    </a>
+                                    <div class="description noselect">Esempi di generazione di musica da prompt testuale</div>
+                                </li>
+                            </ul>
+                        </div>
+            
+                        <div class="card">
+                            <h2>📚 Risorse per l'apprendimento</h2>
+                            <ul>
+                                <li>
+                                    <a href="https://course.fast.ai" target="_blank" rel="noopener">
+                                        <span class="noselect">Fast.ai</span>
+                                        <span class="tag noselect">Gratuito</span>
+                                    </a>
+                                    <div class="description noselect">Deep Learning pratico per sviluppatori con approccio top-down</div>
+                                    <div class="resource-meta noselect">Corso aggiornato 2024</div>
+                                </li>
+                                <li>
+                                    <a href="https://huggingface.co/learn" target="_blank" rel="noopener">
+                                        <span class="noselect">Hugging Face</span>
+                                        <span class="tag noselect">Gratuito</span>
+                                    </a>
+                                    <div class="description noselect">Piattaforma per l'apprendimento e condivisione di modelli AI con vasta community</div>
+                                    <div class="resource-meta noselect">+10,000 modelli disponibili</div>
+                                </li>
+                                <li>
+                                    <a href="https://www.tensorflow.org/learn" target="_blank" rel="noopener">
+                                        <span class="noselect">TensorFlow</span>
+                                        <span class="tag noselect">Gratuito</span>
+                                    </a>
+                                    <div class="description noselect">Framework per machine learning di Google con ampia documentazione</div>
+                                    <div class="resource-meta noselect">Supporto GPU/TPU</div>
+                                </li>
+                            </ul>
+                        </div>
+            
+                        <div class="card">
+                            <h2>🔧 Strumenti Utili e Vari</h2>
+                            <ul>
+                                <li>
+                                    <a href="https://www.deepl.com/it/translator" target="_blank" rel="noopener">
+                                        <span class="noselect">DeepL</span>
+                                        <span class="tag noselect">Gratuito</span>
+                                    </a>
+                                    <div class="description noselect">Traduttore - Piattaforma completa di IA linguistica</div>
+                                    <div class="resource-meta noselect">Basato su reti neurali e LLM specializzati nella traduzione</div>
+                                </li>
+                                <li>
+                                    <a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener">
+                                        <span class="noselect">This Person Does Not Exist</span>
+                                        <span class="tag noselect">Gratuito</span>
+                                    </a>
+                                    <div class="description noselect">Generatore di volti realistici ma completamente artificiali</div>
+                                    <div class="resource-meta noselect">Basato su StyleGAN2</div>
+                                </li>
+                            </ul>
+                        </div>
+            
+                        <div class="card">
+                            <h2>📥 Risorse Scaricabili</h2>
+                            <ul>
+                                <li>
+                                    <a href="Intelligenza Artificiale.pdf" download>
+                                        <span class="noselect">Presentazione prima serata sull'IA</span>
+                                        <span class="tag noselect">PDF</span>
+                                    </a>
+                                    <div class="description noselect">File della presentazione</div>
+                                    <div class="resource-meta noselect">Ultima versione: Gennaio 2024</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+            
+                    <footer>
+                        <p class="subtitle noselect">Strumenti AI & Riferimenti - Aggiornato con nuovi strumenti e risorse</p>
+                    </footer>
+                </div>
+            </div>
         </div>
 
-        <div class="grid">
-            <div class="card">
-                <h2>📱 Language Models</h2>
-                <ul>
-                    <li>
-                        <a href="https://chat.openai.com" target="_blank" rel="noopener">
-                            <span>ChatGPT</span>
-                            <span class="tag">Gratuito/Premium</span>
-                        </a>
-                        <div class="description">Il chatbot di OpenAI - leader nel settore del language processing</div>
-                        <div class="resource-meta">Ultimo aggiornamento: GPT-4</div>
-                    </li>
-                    <li>
-                        <a href="https://claude.ai" target="_blank" rel="noopener">
-                            <span>Claude</span>
-                            <span class="tag">Gratuito</span>
-                        </a>
-                        <div class="description">Il chatbot di Anthropic con capacità di analisi e scrittura avanzate</div>
-                        <div class="resource-meta">Ultimo aggiornamento: Claude 3</div>
-                    </li>
-                    <li>
-                        <a href="https://bard.google.com" target="_blank" rel="noopener">
-                            <span>Gemini</span>
-                            <span class="tag">Gratuito</span>
-                        </a>
-                        <div class="description">Il chatbot di Google con integrazione dei servizi Google</div>
-                        <div class="resource-meta">Ultimo aggiornamento: Gemini Pro</div>
-                    </li>
-                </ul>
+        <div class="evening">
+            <div class="evening-header" onclick="toggleContent(this)">
+                <div>
+                    <h2>27 Gennaio - Giovani e intelligenza artificiale</h2>
+                    <div class="speakers noselect">Con Antonio Palmieri e Alfredo Di Lello</div>
+                </div>
             </div>
-
-            <div class="card">
-                <h2>🎨 Strumenti artistici</h2>
-                <ul>
-                    <li>
-                        <a href="https://midjourney.com" target="_blank" rel="noopener">
-                            <span>Midjourney</span>
-                            <span class="tag">Premium</span>
-                        </a>
-                        <div class="description">Generazione di immagini AI avanzata tramite Discord</div>
-                        <div class="resource-meta">Versione: V6</div>
-                    </li>
-                    <li>
-                        <a href="https://labs.openai.com" target="_blank" rel="noopener">
-                            <span>DALL-E</span>
-                            <span class="tag">Crediti</span>
-                        </a>
-                        <div class="description">Generazione di immagini AI di OpenAI con stile artistico unico</div>
-                        <div class="resource-meta">Versione: DALL-E 3</div>
-                    </li>
-                    <li>
-                        <a href="https://stablediffusionweb.com" target="_blank" rel="noopener">
-                            <span>Stable Diffusion</span>
-                            <span class="tag">Open Source</span>
-                        </a>
-                        <div class="description">Generazione di immagini AI open source personalizzabile</div>
-                        <div class="resource-meta">Versione: 2.1</div>
-                    </li>
-                    <li>
-                        <a href="https://google-research.github.io/seanet/musiclm/examples/" target="_blank" rel="noopener">
-                            <span>MusicLM</span>
-                            <span class="tag">Open Source</span>
-                        </a>
-                        <div class="description">Esempi di generazione di musica da prompt testuale</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>📚 Risorse per l'apprendimento</h2>
-                <ul>
-                    <li>
-                        <a href="https://course.fast.ai" target="_blank" rel="noopener">
-                            <span>Fast.ai</span>
-                            <span class="tag">Gratuito</span>
-                        </a>
-                        <div class="description">Deep Learning pratico per sviluppatori con approccio top-down</div>
-                        <div class="resource-meta">Corso aggiornato 2024</div>
-                    </li>
-                    <li>
-                        <a href="https://huggingface.co/learn" target="_blank" rel="noopener">
-                            <span>Hugging Face</span>
-                            <span class="tag">Gratuito</span>
-                        </a>
-                        <div class="description">Piattaforma per l'apprendimento e condivisione di modelli AI con vasta community</div>
-                        <div class="resource-meta">+10,000 modelli disponibili</div>
-                    </li>
-                    <li>
-                        <a href="https://www.tensorflow.org/learn" target="_blank" rel="noopener">
-                            <span>TensorFlow</span>
-                            <span class="tag">Gratuito</span>
-                        </a>
-                        <div class="description">Framework per machine learning di Google con ampia documentazione</div>
-                        <div class="resource-meta">Supporto GPU/TPU</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>🔧 Strumenti Utili e Vari</h2>
-                <ul>
-                    <li>
-                        <a href="https://www.deepl.com/it/translator" target="_blank" rel="noopener">
-                            <span>DeepL</span>
-                            <span class="tag">Gratuito</span>
-                        </a>
-                        <div class="description">Traduttore - Piattaforma completa di IA linguistica</div>
-                        <div class="resource-meta">Basato su reti neurali e LLM specializzati nella traduzione</div>
-                    </li>
-                    <li>
-                        <a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener">
-                            <span>This Person Does Not Exist</span>
-                            <span class="tag">Gratuito</span>
-                        </a>
-                        <div class="description">Generatore di volti realistici ma completamente artificiali</div>
-                        <div class="resource-meta">Basato su StyleGAN2</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>📥 Risorse Scaricabili</h2>
-                <ul>
-                    <li>
-                        <a href="Intelligenza Artificiale.pdf" download>
-                            <span>Presentazione prima serata sull'IA</span>
-                            <span class="tag">PDF</span>
-                        </a>
-                        <div class="description">File della presentazione</div>
-                        <div class="resource-meta">Ultima versione: Gennaio 2024</div>
-                    </li>
-                </ul>
+            <div class="evening-content active">
+                <div class="container">
+                    <header>
+                        <h1>Raccolta risorse utili</h1>
+                        <p class="subtitle noselect">Una raccolta di strumenti, risorse e riferimenti per esplorare il mondo dei giovani in relazione all'intelligenza artificiale</p>
+                    </header>
+            
+                    <div class="grid">
+            
+                        <div class="card">
+                            <h2>📚 Risorse per l'apprendimento</h2>
+                            <ul>
+                                
+                            </ul>
+                        </div>
+            
+                        <div class="card">
+                            <h2>🔧 Strumenti Utili e Vari</h2>
+                            <ul>                                    
+                            </ul>
+                        </div>
+            
+                        <div class="card">
+                            <h2>📥 Risorse Scaricabili</h2>
+                            <ul>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <footer>
-            <p>© 2024 Strumenti AI & Riferimenti - Aggiornato regolarmente con nuovi strumenti e risorse</p>
-        </footer>
+        <div class="evening disabled">
+            <div class="evening-header" onclick="toggleContent(this)">
+                <div>
+                    <h2>3 Febbraio - Medio oriente e conflitto israelo-palestinese</h2>
+                    <div class="speakers noselect">Con Lorenzo Cremonesi e Simone Suzzani</div>
+                </div>
+            </div>
+            <div class="evening-content"></div>
+        </div>
+
+        <div class="evening disabled">
+            <div class="evening-header">
+                <div>
+                    <h2>10 Febbraio - Sistemi politici in europa occidentale e stati uniti</h2>
+                    <div class="speakers noselect">Con Marco Sioli e Diego Canaletti</div>
+                </div>
+            </div>
+            <div class="evening-content"></div>
+        </div>
+
+        <div class="evening disabled">
+            <div class="evening-header">
+                <div>
+                    <h2>17 Febbraio - Giovani e felicità</h2>
+                    <div class="speakers noselect">Con Laura Parodi, Cristina Crippa e Paolo Belaeff</div>
+                </div>
+            </div>
+            <div class="evening-content"></div>
+        </div>
+    </div>
 
     <script>
-        // Search functionality
-        const searchInput = document.getElementById('search');
-        const cards = document.querySelectorAll('.card li');
-
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            
-            cards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                card.style.display = text.includes(searchTerm) ? '' : 'none';
+        document.addEventListener('DOMContentLoaded', function() {
+            // Close all evening contents when page loads
+            document.querySelectorAll('.evening-content').forEach(content => {
+                content.classList.remove('active');
             });
         });
+    
+        function toggleContent(header) {
+            const evening = header.closest('.evening');
+            
+            if (evening.classList.contains('disabled')) {
+                return;
+            }
+    
+            const content = evening.querySelector('.evening-content');
+            const isActive = content.classList.contains('active');
+    
+            document.querySelectorAll('.evening-content.active').forEach(el => {
+                el.classList.remove('active');
+            });
+    
+            if (!isActive) {
+                content.classList.add('active');
+            }
+        }
     </script>
 </body>
 </html>

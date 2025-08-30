@@ -149,7 +149,7 @@
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
 
-        .notable-participants {
+        .fundraiser {
             margin-top: 40px;
             padding: 25px;
             border-radius: 15px;
@@ -157,13 +157,13 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .notable-participants h3 {
+        .fundraiser h3 {
             color: #1a0b47;
             margin-top: 0;
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
 
-        .notable-participants p {
+        .fundraiser p {
             margin-bottom: 0;
             color: #1a0b47;
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
@@ -234,7 +234,7 @@
                 <li>
                     <strong>Barcelona, Spain</strong> - <span class="date-confirmed" data-en="August 31, 2025" data-it="31 Agosto 2025">August 31, 2025</span>
                     <div class="event-details">
-                        <div><strong data-en="Live Stream Providers:" data-it="Fornitori di Streaming dal Vivo:">Live Stream Providers:</strong></div>
+                        <div><strong data-en="Live Stream Providers:" data-it="Live Stream:">Live Stream Providers:</strong></div>
                         <div style="margin: 8px 0; padding-left: 15px;">
                             • <a href="https://viory.video" target="_blank" rel="noopener">Viory Video</a> - <span data-en="Dedicated livestream of ships leaving Barcelona harbour" data-it="Streaming dedicato delle navi che lasciano il porto di Barcellona">Dedicated livestream of ships leaving Barcelona harbour</span><br>
                             • <a href="https://youtube.com/middleeasteye" target="_blank" rel="noopener">Middle East Eye YouTube</a> - <span data-en="MEE LIVE program coverage at key moments" data-it="Copertura del programma MEE LIVE nei momenti chiave">MEE LIVE program coverage at key moments</span>
@@ -253,7 +253,7 @@
                     <strong data-en="Tunis, Tunisia" data-it="Tunisi, Tunisia">Tunis, Tunisia</strong> - <span class="date-tentative" data-en="September 4, 2025" data-it="4 Settembre 2025">September 4, 2025</span>
                     <div class="event-details">
                         <div><strong data-en="Coverage:" data-it="Copertura:">Coverage:</strong> <span data-en="Extensive local and regional press coverage" data-it="Ampia copertura stampa locale e regionale">Extensive local and regional press coverage</span></div>
-                        <div><strong data-en="Livestreams:" data-it="Streaming dal Vivo:">Livestreams:</strong> <span data-en="Activist collectives via Facebook and Instagram (community coverage)" data-it="Collettivi di attivisti via Facebook e Instagram (copertura comunitaria)">Activist collectives via Facebook and Instagram (community coverage)</span></div>
+                        <div><strong data-en="Livestreams:" data-it="Live Stream:">Livestreams:</strong> <span data-en="Activist collectives via Facebook and Instagram (community coverage)" data-it="Collettivi di attivisti via Facebook e Instagram (copertura comunitaria)">Activist collectives via Facebook and Instagram (community coverage)</span></div>
                     </div>
                 </li>
                 <li>
@@ -265,10 +265,15 @@
                 </li>
             </ul>
 
-            <div class="notable-participants">
+            <div class="fundraiser">
                 <h3 data-en="Fundraising" data-it="Raccolta Fondi">Fundraising</h3>
-                <p data-en="You can help the mission here: " data-it="Puoi sostenere la missione da qui: ">Hundreds of public figures and activists, including <strong>Greta Thunberg</strong>, will participate, raising the global profile of livestreams worldwide.</p>
+                <p data-en="You can help support the mission here: <a href='https://chuffed.org/project/138809-global-sumud-flotilla' target='_blank' rel='noopener'>Chuffed.org</a>."
+                data-it="Puoi sostenere la missione da qui: <a href='https://chuffed.org/project/138809-global-sumud-flotilla' target='_blank' rel='noopener'>Chuffed.org</a>.">
+                    You can help support the mission here: <a href="https://chuffed.org/project/138809-global-sumud-flotilla" target="_blank" rel="noopener">Chuffed.org</a>.
+                </p>
             </div>
+
+
         </div>
     </div>
 
@@ -286,8 +291,9 @@
                 document.documentElement.lang = 'it';
                 
                 elementsWithData.forEach(element => {
-                    element.textContent = element.getAttribute('data-it');
+                    element.innerHTML = element.getAttribute('data-it'); // or data-en
                 });
+
             } else {
                 // Switch to English
                 currentLanguage = 'en';
@@ -295,7 +301,7 @@
                 document.documentElement.lang = 'en';
                 
                 elementsWithData.forEach(element => {
-                    element.textContent = element.getAttribute('data-en');
+                    element.innerHTML = element.getAttribute('data-en');
                 });
             }
         }

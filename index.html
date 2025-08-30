@@ -1,359 +1,312 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-    <title>Corso Formazione Politica Culturale 2025</title>
+    <title>Global Sumud Flotilla 2025</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Ciclo di serate su temi di attualità e riflessione">
+    <meta name="description" content="The largest civilian maritime mission to Gaza in history - Over 50 vessels from 44 countries">
     <style>
-        /* Existing styles ... (keep all your current CSS here) */
+        :root {
+            --primary: #2a4365;
+            --secondary: #4299e1;
+            --background: #f7fafc;
+            --card: #ffffff;
+            --text: #2d3748;
+            --hover: #ebf8ff;
+            --tag: #e2e8f0;
+        }
 
-        /* Add any extra styles for the toggle button and new view */
-        #switchViewBtn {
-            display: block;
-            margin: 20px auto;
-            padding: 12px 24px;
-            background-color: var(--primary);
+        body {
+            background-image:
+                url('zero-flotilla.png'),
+                linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            background-repeat: repeat, no-repeat;
+            background-position: top left, center;
+            background-attachment: scroll, scroll;
+            background-blend-mode: soft-light;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #languageBtn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        #switchViewBtn:hover {
-            background-color: var(--secondary);
+
+        #languageBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        }
+
+        #languageBtn:active {
+            transform: translateY(0);
         }
 
         #globalSumudFlotilla {
-            display: none;
-            background: var(--card);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 60px 5px 20px 5px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
         }
-        #globalSumudFlotilla h2 {
-            color: var(--primary);
+        
+        #globalSumudFlotilla h1 {
+            color: #1a0b47;
             margin-top: 0;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            font-weight: 800;
         }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #1a0b47;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
         #globalSumudFlotilla ul {
             list-style-type: none;
             padding: 0;
+            max-width: 800px;
+            margin: 0 auto;
         }
+        
         #globalSumudFlotilla li {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            background-color: var(--hover);
-            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.25);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
         }
+        
         #globalSumudFlotilla li:hover {
-            background-color: var(--secondary);
+            transform: translateY(-5px);
+            background: rgba(102, 126, 234, 0.7);
             color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
+        
         #globalSumudFlotilla a {
-            color: var(--secondary);
+            color: #5b21b6;
             font-weight: 600;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
-        #globalSumudFlotilla a:hover {
+        
+        #globalSumudFlotilla li:hover a {
             color: white;
-            text-decoration: underline;
+        }
+        
+        #globalSumudFlotilla strong {
+            font-size: 1.2rem;
+            color: #1a0b47;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+        }
+        
+        #globalSumudFlotilla li:hover strong {
+            color: white;
+        }
+
+        .flotilla-info {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .flotilla-info p {
+            margin: 0;
+            color: #1a0b47;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .notable-participants {
+            margin-top: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            border-left: 5px solid rgba(107, 70, 193, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .notable-participants h3 {
+            color: #1a0b47;
+            margin-top: 0;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .notable-participants p {
+            margin-bottom: 0;
+            color: #1a0b47;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+        }
+
+        .event-details {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .event-details div {
+            margin: 8px 0;
+        }
+
+        .event-details strong {
+            color: #4c1d95;
+        }
+
+        .date-confirmed {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .date-tentative {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            #globalSumudFlotilla h1 {
+                font-size: 2rem;
+            }
+
+            #globalSumudFlotilla {
+                padding: 20px;
+            }
+        }
+
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background: #1a202c;
+                --card: #2d3748;
+                --text: #f7fafc;
+                --hover: #2a4365;
+                --tag: #4a5568;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <button id="languageBtn" onclick="toggleLanguage()">Italiano</button>
 
-        <button id="switchViewBtn">Show Global Sumud Flotilla</button>
-
-        <div id="currentContent">
-            <!-- Existing content copied from your original HTML -->
-
-            <h1 style="text-align: center; color: var(--primary);">CORSO DI FORMAZIONE POLITICA E CULTURALE</h1>
-            <h2 style="text-align: center; color: var(--primary);">Terza edizione 2025</h2>
-            <div class="evening">
-                <div class="evening-header" onclick="toggleContent(this)">
-                    <div>
-                        <h2>20 Gennaio - Introduzione all'intelligenza artificiale</h2>
-                        <div class="speakers noselect">Con Don Stefano Cucchetti e Marco Cormio</div>
-                    </div>
-                </div>
-                <div class="evening-content active">
-                    <div class="container">
-                        <header>
-                            <h1>Strumenti AI & Riferimenti</h1>
-                            <p class="subtitle noselect">Una raccolta di strumenti, risorse e riferimenti per esplorare il mondo dell'intelligenza artificiale</p>
-                        </header>
-                
-                        <div class="search-container">
-                            <input type="text" class="search-input  noselect" placeholder="Cerca strumenti e risorse..." id="search">
-                        </div>
-                
-                        <div class="grid">
-                            <div class="card">
-                                <h2>📱 Chatbots</h2>
-                                <ul>
-                                    <li>
-                                        <a href="https://chat.openai.com" target="_blank" rel="noopener">
-                                            <span class="noselect">ChatGPT</span>
-                                            <span class="tag noselect">Gratuito/Premium</span>
-                                        </a>
-                                        <div class="description noselect">Il chatbot di OpenAI - leader nel settore del language processing</div>
-                                        <div class="resource-meta noselect">Ultimo aggiornamento: GPT-4</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://claude.ai" target="_blank" rel="noopener">
-                                            <span class="noselect">Claude</span>
-                                            <span class="tag noselect">Gratuito</span>
-                                        </a>
-                                        <div class="description noselect">Il chatbot di Anthropic con capacità di analisi e scrittura avanzate</div>
-                                        <div class="resource-meta noselect">Ultimo aggiornamento: Claude 3</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://bard.google.com" target="_blank" rel="noopener">
-                                            <span class="noselect">Gemini</span>
-                                            <span class="tag noselect">Gratuito</span>
-                                        </a>
-                                        <div class="description noselect">Il chatbot di Google con integrazione dei servizi Google</div>
-                                        <div class="resource-meta noselect">Ultimo aggiornamento: Gemini Pro</div>
-                                    </li>
-                                </ul>
-                            </div>
-                
-                            <div class="card">
-                                <h2>🎨 Strumenti artistici</h2>
-                                <ul>
-                                    <li>
-                                        <a href="https://midjourney.com" target="_blank" rel="noopener">
-                                            <span class="noselect">Midjourney</span>
-                                            <span class="tag noselect">Premium</span>
-                                        </a>
-                                        <div class="description noselect">Generazione di immagini AI avanzata tramite Discord</div>
-                                        <div class="resource-meta noselect">Versione: V6</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://labs.openai.com" target="_blank" rel="noopener">
-                                            <span class="noselect">DALL-E</span>
-                                            <span class="tag noselect">Crediti</span>
-                                        </a>
-                                        <div class="description noselect">Generazione di immagini AI di OpenAI con stile artistico unico</div>
-                                        <div class="resource-meta noselect">Versione: DALL-E 3</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://stablediffusionweb.com" target="_blank" rel="noopener">
-                                            <span class="noselect">Stable Diffusion</span>
-                                            <span class="tag noselect">Open Source</span>
-                                        </a>
-                                        <div class="description noselect">Generazione di immagini AI open source personalizzabile</div>
-                                        <div class="resource-meta noselect">Versione: 2.1</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://google-research.github.io/seanet/musiclm/examples/" target="_blank" rel="noopener">
-                                            <span class="noselect">MusicLM</span>
-                                            <span class="tag noselect">Open Source</span>
-                                        </a>
-                                        <div class="description noselect">Esempi di generazione di musica da prompt testuale</div>
-                                    </li>
-                                </ul>
-                            </div>
-                
-                            <div class="card">
-                                <h2>📚 Risorse per l'apprendimento</h2>
-                                <ul>
-                                    <li>
-                                        <a href="https://course.fast.ai" target="_blank" rel="noopener">
-                                            <span class="noselect">Fast.ai</span>
-                                            <span class="tag noselect">Gratuito</span>
-                                        </a>
-                                        <div class="description noselect">Deep Learning pratico per sviluppatori con approccio top-down</div>
-                                        <div class="resource-meta noselect">Corso aggiornato 2024</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://huggingface.co/learn" target="_blank" rel="noopener">
-                                            <span class="noselect">Hugging Face</span>
-                                            <span class="tag noselect">Gratuito</span>
-                                        </a>
-                                        <div class="description noselect">Piattaforma per l'apprendimento e condivisione di modelli AI con vasta community</div>
-                                        <div class="resource-meta noselect">+10,000 modelli disponibili</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://www.tensorflow.org/learn" target="_blank" rel="noopener">
-                                            <span class="noselect">TensorFlow</span>
-                                            <span class="tag noselect">Gratuito</span>
-                                        </a>
-                                        <div class="description noselect">Framework per machine learning di Google con ampia documentazione</div>
-                                        <div class="resource-meta noselect">Supporto GPU/TPU</div>
-                                    </li>
-                                </ul>
-                            </div>
-                
-                            <div class="card">
-                                <h2>🔧 Strumenti Utili e Vari</h2>
-                                <ul>
-                                    <li>
-                                        <a href="https://www.deepl.com/it/translator" target="_blank" rel="noopener">
-                                            <span class="noselect">DeepL</span>
-                                            <span class="tag noselect">Gratuito</span>
-                                        </a>
-                                        <div class="description noselect">Traduttore - Piattaforma completa di IA linguistica</div>
-                                        <div class="resource-meta noselect">Basato su reti neurali e LLM specializzati nella traduzione</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://thispersondoesnotexist.com/" target="_blank" rel="noopener">
-                                            <span class="noselect">This Person Does Not Exist</span>
-                                            <span class="tag noselect">Gratuito</span>
-                                        </a>
-                                        <div class="description noselect">Generatore di volti realistici ma completamente artificiali</div>
-                                        <div class="resource-meta noselect">Basato su StyleGAN2</div>
-                                    </li>
-                                </ul>
-                            </div>
-                
-                            <div class="card">
-                                <h2>📥 Risorse Scaricabili</h2>
-                                <ul>
-                                    <li>
-                                        <a href="Intelligenza Artificiale.pdf" download>
-                                            <span class="noselect">Presentazione prima serata sull'IA</span>
-                                            <span class="tag noselect">PDF</span>
-                                        </a>
-                                        <div class="description noselect">File della presentazione</div>
-                                        <div class="resource-meta noselect">Ultima versione: Gennaio 2024</div>
-                                    </li>
-                                    <li>
-                                        <a href="https://drive.google.com/file/d/1zi09XObb3UuH7AVqD3NQskmghM_NxO9k/view" target="_blank" rel="noopener">
-                                            <span class="noselect">Link al video scaricabile della prima serata</span>
-                                            <span class="tag noselect">Video</span>
-                                        </a>
-                                        <div class="description noselect">link al video</div>
-                                        <div class="resource-meta noselect">Data riprese: 20 Gennaio 2024</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                
-                        <footer>
-                            <p class="subtitle noselect">Strumenti AI & Riferimenti - Aggiornato con nuovi strumenti e risorse</p>
-                        </footer>
-                    </div>
-                </div>
-            </div>
-            <!-- Rest of your original evenings ... -->
-            <div class="evening">
-                <div class="evening-header" onclick="toggleContent(this)">
-                    <div>
-                        <h2>27 Gennaio - Giovani e intelligenza artificiale</h2>
-                        <div class="speakers noselect">Con Antonio Palmieri e Alfredo Di Lello</div>
-                    </div>
-                </div>
-                <div class="evening-content active">
-                    <div class="container">
-                        <header>
-                            <h1>Raccolta risorse utili</h1>
-                            <p class="subtitle noselect">Una raccolta di strumenti, risorse e riferimenti per esplorare il mondo dei giovani in relazione all'intelligenza artificiale</p>
-                        </header>
-                
-                        <div class="grid">
-                            <div class="card">
-                                <h2>📚 Risorse per l'apprendimento</h2>
-                                <ul></ul>
-                            </div>
-                            <div class="card">
-                                <h2>🔧 Strumenti Utili e Vari</h2>
-                                <ul></ul>
-                            </div>
-                            <div class="card">
-                                <h2>📥 Risorse Scaricabili</h2>
-                                <ul>
-                                    <li>
-                                        <a href="presentazione2.pdf" download>
-                                            <span class="noselect">Presentazione seconda serata sull'IA</span>
-                                            <span class="tag noselect">PDF</span>
-                                        </a>
-                                        <div class="description noselect">File della presentazione</div>
-                                        <div class="resource-meta noselect">Ultima versione: Gennaio 2024</div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- disabled evenings omitted for brevity -->
-        </div>
-        
         <div id="globalSumudFlotilla">
-            <h2>Global Sumud Flotilla</h2>
+            <h1 data-en="Global Sumud Flotilla 2025" data-it="Global Sumud Flotilla 2025">Global Sumud Flotilla 2025</h1>
+            <p class="subtitle" data-en="The largest civilian maritime mission to Gaza in history - Over 50 vessels from 44 countries" data-it="La più grande missione marittima civile verso Gaza della storia - Oltre 50 imbarcazioni da 44 paesi">The largest civilian maritime mission to Gaza in history - Over 50 vessels from 44 countries</p>
+            
+            <div class="flotilla-info">
+                <p data-en="⚠️ Security concerns mean some details may be released shortly before departure" data-it="⚠️ Per motivi di sicurezza alcuni dettagli potrebbero essere rilasciati poco prima della partenza">⚠️ Security concerns mean some details may be released shortly before departure</p>
+            </div>
+
             <ul>
                 <li>
-                    <strong>Harbor of Haifa</strong> - 
-                    <a href="https://livestream.haifa.com" target="_blank" rel="noopener">Live Stream</a> | 
-                    <a href="https://info.haifa.com" target="_blank" rel="noopener">More Info</a>
+                    <strong>Barcelona, Spain</strong> - <span class="date-confirmed" data-en="August 31, 2025" data-it="31 Agosto 2025">August 31, 2025</span>
+                    <div class="event-details">
+                        <div><strong data-en="Live Stream Providers:" data-it="Fornitori di Streaming dal Vivo:">Live Stream Providers:</strong></div>
+                        <div style="margin: 8px 0; padding-left: 15px;">
+                            • <a href="https://viory.video" target="_blank" rel="noopener">Viory Video</a> - <span data-en="Dedicated livestream of ships leaving Barcelona harbour" data-it="Streaming dedicato delle navi che lasciano il porto di Barcellona">Dedicated livestream of ships leaving Barcelona harbour</span><br>
+                            • <a href="https://youtube.com/middleeasteye" target="_blank" rel="noopener">Middle East Eye YouTube</a> - <span data-en="MEE LIVE program coverage at key moments" data-it="Copertura del programma MEE LIVE nei momenti chiave">MEE LIVE program coverage at key moments</span>
+                        </div>
+                        <div><strong data-en="Social Media:" data-it="Social Media:">Social Media:</strong> <span data-en="Instagram and activist platforms for real-time updates" data-it="Instagram e piattaforme di attivisti per aggiornamenti in tempo reale">Instagram and activist platforms for real-time updates</span></div>
+                    </div>
                 </li>
                 <li>
-                    <strong>Harbor of Alexandria</strong> - 
-                    <a href="https://livestream.alexandria.com" target="_blank" rel="noopener">Live Stream</a> | 
-                    <a href="https://info.alexandria.com" target="_blank" rel="noopener">More Info</a>
+                    <strong data-en="Genoa, Italy" data-it="Genova, Italia">Genoa, Italy</strong> - <span class="date-confirmed" data-en="August 31, 2025" data-it="31 Agosto 2025">August 31, 2025</span>
+                    <div class="event-details">
+                        <div><strong data-en="Event Details:" data-it="Dettagli dell'Evento:">Event Details:</strong> <span data-en="Vessels depart alongside Barcelona's, converging in Sicily before continuing to Gaza" data-it="Le imbarcazioni partono insieme a quelle di Barcellona, convergendo in Sicilia prima di continuare verso Gaza">Vessels depart alongside Barcelona's, converging in Sicily before continuing to Gaza</span></div>
+                        <div><strong data-en="Coverage:" data-it="Copertura:">Coverage:</strong> <a href="https://fanpage.it" target="_blank" rel="noopener">Fanpage.it</a> <span data-en="and Italian radio stations (partial coverage)" data-it="e stazioni radio italiane (copertura parziale)">and Italian radio stations (partial coverage)</span></div>
+                    </div>
                 </li>
                 <li>
-                    <strong>Harbor of Istanbul</strong> - 
-                    <a href="https://livestream.istanbul.com" target="_blank" rel="noopener">Live Stream</a> | 
-                    <a href="https://info.istanbul.com" target="_blank" rel="noopener">More Info</a>
+                    <strong data-en="Tunis, Tunisia" data-it="Tunisi, Tunisia">Tunis, Tunisia</strong> - <span class="date-tentative" data-en="September 4, 2025" data-it="4 Settembre 2025">September 4, 2025</span>
+                    <div class="event-details">
+                        <div><strong data-en="Coverage:" data-it="Copertura:">Coverage:</strong> <span data-en="Extensive local and regional press coverage" data-it="Ampia copertura stampa locale e regionale">Extensive local and regional press coverage</span></div>
+                        <div><strong data-en="Livestreams:" data-it="Streaming dal Vivo:">Livestreams:</strong> <span data-en="Activist collectives via Facebook and Instagram (community coverage)" data-it="Collettivi di attivisti via Facebook e Instagram (copertura comunitaria)">Activist collectives via Facebook and Instagram (community coverage)</span></div>
+                    </div>
                 </li>
                 <li>
-                    <strong>Harbor of Limassol</strong> - 
-                    <a href="https://livestream.limassol.com" target="_blank" rel="noopener">Live Stream</a> | 
-                    <a href="https://info.limassol.com" target="_blank" rel="noopener">More Info</a>
+                    <strong data-en="Sicily, Italy & Other Mediterranean Ports" data-it="Sicilia, Italia e Altri Porti del Mediterraneo">Sicily, Italy & Other Mediterranean Ports</strong> - <span class="date-tentative" data-en="September 4, 2025" data-it="4 Settembre 2025">September 4, 2025</span>
+                    <div class="event-details">
+                        <div><strong data-en="Event Details:" data-it="Dettagli dell'Evento:">Event Details:</strong> <span data-en="Additional ships join the humanitarian convoy" data-it="Navi aggiuntive si uniscono al convoglio umanitario">Additional ships join the humanitarian convoy</span></div>
+                        <div><strong data-en="Coverage:" data-it="Copertura:">Coverage:</strong> <span data-en="Italian regional media and solidarity networks hosting community live events" data-it="Media regionali italiani e reti di solidarietà che ospitano eventi dal vivo della comunità">Italian regional media and solidarity networks hosting community live events</span></div>
+                    </div>
                 </li>
             </ul>
+
+            <div class="notable-participants">
+                <h3 data-en="Notable Participants" data-it="Partecipanti di Rilievo">Notable Participants</h3>
+                <p data-en="Hundreds of public figures and activists, including Greta Thunberg, will participate, raising the global profile of livestreams worldwide." data-it="Centinaia di personaggi pubblici e attivisti, inclusa Greta Thunberg, parteciperanno, aumentando il profilo globale degli streaming dal vivo in tutto il mondo.">Hundreds of public figures and activists, including <strong>Greta Thunberg</strong>, will participate, raising the global profile of livestreams worldwide.</p>
+            </div>
         </div>
     </div>
 
     <script>
-        // Your existing toggleContent function for evening content
-        function toggleContent(header) {
-            const evening = header.closest('.evening');
+        let currentLanguage = 'en';
+
+        function toggleLanguage() {
+            const btn = document.getElementById('languageBtn');
+            const elementsWithData = document.querySelectorAll('[data-en][data-it]');
             
-            if (evening.classList.contains('disabled')) {
-                return;
-            }
-    
-            const content = evening.querySelector('.evening-content');
-            const isActive = content.classList.contains('active');
-    
-            document.querySelectorAll('.evening-content.active').forEach(el => {
-                el.classList.remove('active');
-            });
-    
-            if (!isActive) {
-                content.classList.add('active');
+            if (currentLanguage === 'en') {
+                // Switch to Italian
+                currentLanguage = 'it';
+                btn.textContent = 'English';
+                document.documentElement.lang = 'it';
+                
+                elementsWithData.forEach(element => {
+                    element.textContent = element.getAttribute('data-it');
+                });
+            } else {
+                // Switch to English
+                currentLanguage = 'en';
+                btn.textContent = 'Italiano';
+                document.documentElement.lang = 'en';
+                
+                elementsWithData.forEach(element => {
+                    element.textContent = element.getAttribute('data-en');
+                });
             }
         }
-
-        // Toggle between current content and Global Sumud Flotilla view
-        document.getElementById('switchViewBtn').addEventListener('click', () => {
-            const currentContent = document.getElementById('currentContent');
-            const flotilla = document.getElementById('globalSumudFlotilla');
-            const btn = document.getElementById('switchViewBtn');
-            if (currentContent.style.display !== 'none') {
-                currentContent.style.display = 'none';
-                flotilla.style.display = 'block';
-                btn.textContent = 'Show Current Content';
-            } else {
-                currentContent.style.display = 'block';
-                flotilla.style.display = 'none';
-                btn.textContent = 'Show Global Sumud Flotilla';
-            }
-        });
-
-        // On page load, ensure only current content is visible and flotilla hidden
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('currentContent').style.display = 'block';
-            document.getElementById('globalSumudFlotilla').style.display = 'none';
-        });
     </script>
 </body>
 </html>

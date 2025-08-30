@@ -240,8 +240,16 @@
 
         <div id="globalSumudFlotilla">
             <a href="https://globalsumudflotilla.org/" target="_blank" rel="noopener" aria-label="global-sumud-flotilla" style="display: block; width: max-content; margin: 0 auto;">
-                <img src="Global_Sumud_Flotilla_logo.png" alt="delegazione-spagnola">
+                <img src="Global_Sumud_Flotilla_logo.png" alt="delegazione-spagnola" style="max-width: 100%; height: auto;">
             </a>
+
+            <style>
+                @media (max-width: 600px) {
+                    a[aria-label="global-sumud-flotilla"] img {
+                        width: 150px; /* smaller width on mobile */
+                    }
+                }
+            </style>
 
             <p class="subtitle" data-en="The largest civilian maritime mission to Gaza in history - Over 50 vessels from 44 countries" 
             data-it="La più grande missione marittima civile verso Gaza della storia - Oltre 50 imbarcazioni da 44 paesi">

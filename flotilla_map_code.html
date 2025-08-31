@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Flotilla Map - Mediterranean OpenStreetMap</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #map {
+      width: 100vw;
+      height: 75vh;   /* Responsive relative to viewport height */
+      max-width: 100%;
+      max-height: 100vh;
+      min-height: 350px;
+      margin: 0 auto;
+      border: 2px solid #aaa;
+      box-sizing: border-box;
+    }
+    .harbor-marker {
+      background: #fff;
+      border: 2px solid #019;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #019;
+      box-shadow: 0 0 4px #999;
+    }
+    .ship-marker {
+      background: #fff;
+      border: 2px solid #093;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: #093;
+      box-shadow: 0 0 4px #999;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Flotilla Routes - Mediterranean Map</h2>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script>
+    // Center roughly in Mediterranean, zoom to fit region nicely
+    const mapCenter = [36.0, 14.0]; 
+    const mapZoom = 5;
+
+    const map = L.map('map', {
+      center: mapCenter,
+      zoom: mapZoom,
+      minZoom: 4,
+      maxZoom: 12,
+      zoomSnap: 1,
+      zoomDelta: 1,
+      maxBounds: [
+        [30.0, -10.0], // Southwest corner (lat, lng)
+        [46.0, 36.0]   // Northeast corner (lat, lng)
+      ],
+      maxBoundsViscosity: 1.0
+    });
+
+    // OpenStreetMap tile layer with attribution
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Harbor coordinates (Approximate latitude, longitude)
+    const harbors = [
+      { name: "Barcelona", position: [41.3851, 2.1734] },
+      { name: "Genoa", position: [44.4056, 8.9463] },
+      { name: "Tunis", position: [36.8065, 10.1815] },
+      { name: "Sicily", position: [37.5999, 14.0154] }, // Palermo approx
+      { name: "Gaza", position: [31.5012, 34.4669] }
+    ];
+
+    // Add harbor markers with icons and popups
+    harbors.forEach(h => {
+      const icon = L.divIcon({
+        className: 'harbor-marker',
+        html: '⚓',
+        iconSize: [18, 18],
+        iconAnchor: [9, 9]
+      });
+      L.marker(h.position, {icon}).addTo(map)
+        .bindPopup(`<b>${h.name}</b>`);
+    });
+
+    // Ship markers positioned at harbors initially (example positions)
+    const ships = [
+      { name: "Ship 1", position: harbors[0].position }, // Barcelona
+      { name: "Ship 2", position: harbors[1].position }, // Genoa
+      { name: "Ship 3", position: harbors[2].position }, // Tunis
+      { name: "Ship 4", position: harbors[3].position }  // Sicily
+    ];
+
+    ships.forEach(s => {
+      const icon = L.divIcon({
+        className: 'ship-marker',
+        html: '🚢',
+        iconSize: [22, 22],
+        iconAnchor: [11, 11]
+      });
+      L.marker(s.position, {icon}).addTo(map)
+        .bindPopup(`<b>${s.name}</b>`);
+    });
+
+    // Routes (arrays of lat,lng) from harbors to Gaza with intermediate points
+    const routes = [
+      [harbors[0].position, [37.5, 0.0], [31.5, 34.5]], // Barcelona → Med Route 1 → Gaza
+      [harbors[1].position, [40.0, 10.0], [31.5, 34.5]], // Genoa → Med Route 2 → Gaza
+      [harbors[2].position, [35.0, 15.0], [31.5, 34.5]], // Tunis → Med Route 3 → Gaza
+      [harbors[3].position, [36.0, 16.0], [31.5, 34.5]]  // Sicily → Med Route 4 → Gaza
+    ];
+
+    const colors = ["#4287f5", "#f5a142", "#4df542", "#f542e3"];
+
+    // Draw each route polyline with popup
+    routes.forEach((route, i) => {
+      L.polyline(route, {color: colors[i], weight: 4, opacity: 0.85}).addTo(map)
+        .bindPopup(`Route ${i+1}: <br>${harbors[i].name} → Gaza`);
+    });
+  </script>
+</body>
+</html>

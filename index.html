@@ -404,6 +404,47 @@
             transform: rotate(-90deg);
         }
 
+        .past-live-section {
+            background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%);
+            margin: 24px 0;
+            padding: 24px;
+            border-radius: 16px;
+            color: #1e293b;
+            box-shadow: 0 4px 15px rgba(59,130,246,0.05);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .past-live-section h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #1e40af;
+        }
+
+        .past-live-section .collapse-arrow {
+            font-size: 1.1em;
+            color: #64748b;
+        }
+
+        .past-live-section .livestream-links ul li {
+            background: rgba(59,130,246,0.03);
+            border-radius: 8px;
+            border-left: 4px solid #64748b;
+            margin: 8px 0;
+            padding: 12px;
+            color: #334155;
+        }
+
+
         .collapsible-content {
             margin-top: 24px;
             position: relative;
@@ -747,7 +788,7 @@
                 <div class="collapsible-content">
                     <div class="livestream-links">
                         <ul>
-                            <li>
+                            <!-- <li>
                                 <a href="https://www.youtube.com/live/MMzTxf8s8is?si=_sKB8Xp9P7nFdYC8" target="_blank" rel="noopener">
                                     🎥 <strong data-en="PRESS CONFERENCE" data-it="CONFERENZA STAMPA">CONFERENZA STAMPA</strong>
                                 </a>
@@ -760,6 +801,34 @@
                             <li>
                                 <a href="https://www.youtube.com/watch?v=01O_fn5GB4Y&ab_channel=CorrieredellaSera" target="_blank" rel="noopener">
                                     🚢 <strong data-en="DEPARTURE FROM GENOA HARBOR" data-it="PARTENZA PORTO DI GENOVA">PARTENZA PORTO DI GENOVA</strong> 
+                                </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="past-live-section collapsed">
+                <h3 onclick="toggleCollapse(this)">
+                    🕑 PAST LIVE STREAMS
+                    <span class="collapse-arrow" aria-hidden="true">▼</span>
+                </h3>
+                <div class="collapsible-content" style="display:none;">
+                    <div class="livestream-links">
+                        <ul>
+                            <li>
+                                <a href="https://www.youtube.com/live/MMzTxf8s8is?si=_sKB8Xp9P7nFdYC8" target="_blank" rel="noopener">
+                                    🎥 <strong>PRESS CONFERENCE</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/live/x6YXHAfqlqY?si=6aVZ304LMf9sHzbZ" target="_blank" rel="noopener">
+                                    🚢 <strong>DEPARTURE FROM BARCELONA HARBOR</strong> 
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=01O_fn5GB4Y&ab_channel=CorrieredellaSera" target="_blank" rel="noopener">
+                                    🚢 <strong>DEPARTURE FROM GENOA HARBOR</strong>
                                 </a>
                             </li>
                         </ul>
@@ -928,21 +997,24 @@
 
         function toggleCollapse(header) {
             var content = header.nextElementSibling;
-            var arrow = header.querySelector("span[aria-hidden]");
+            var arrow = header.querySelector(".collapse-arrow");
             if (content.style.display === "none" || content.style.display === "") {
                 content.style.display = "block";
+                header.parentElement.classList.remove("collapsed");
                 if (arrow) arrow.textContent = "▲";
             } else {
                 content.style.display = "none";
+                header.parentElement.classList.add("collapsed");
                 if (arrow) arrow.textContent = "▼";
             }
         }
-        // Optionally: open by default
-        document.addEventListener('DOMContentLoaded', () => {
-            // Remove this to keep the section collapsed by default:
-            document.querySelectorAll('.collapsible-content').forEach(c => c.style.display = 'block');
-            document.querySelectorAll('.fundraiser h3 span[aria-hidden]').forEach(s => s.textContent = '▲');
+
+        // Onload: close the "past-live-section" collapsible by default
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.past-live-section .collapsible-content').forEach(c => c.style.display = 'none');
+            document.querySelectorAll('.past-live-section .collapse-arrow').forEach(s => s.textContent = '▼');
         });
+
 
     </script>
 </body>

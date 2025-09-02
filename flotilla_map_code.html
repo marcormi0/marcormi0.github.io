@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!-- Allow native pinch zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Global Sumud Flotilla - Live Progress Map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
@@ -17,17 +18,22 @@
 
   <div class="header">
     <h1>🚢 Global Sumud Flotilla</h1>
-    <p>Real-time tracking of humanitarian ships to Gaza</p>
+    <p class="disclaimer">
+      ⚠️ The ship markers are not based on real-time or verified data. 
+      Positions are approximated based on official press releases from the Global Sumud Flotilla.
+    </p>
   </div>
 
-  <div class="control-panel">
+
+  <!-- Toggle Button for Control Panel -->
+  <button id="toggleControlPanel" class="fab secondary" title="Show/hide panel">📊</button>
+
+  <!-- Control Panel -->
+  <div class="control-panel collapsed" id="controlPanel">
     <h3 style="font-size: 14px; font-weight: 700; color: #1f2937; margin-bottom: 12px;">
       📊 Fleet Status
     </h3>
-    <div class="status-grid" id="shipStatusGrid">
-      <!-- Ship statuses will be populated here -->
-    </div>
-    
+    <div class="status-grid" id="shipStatusGrid"></div>
     <div class="legend">
       <h4>Legend</h4>
       <div class="legend-item">
@@ -49,9 +55,13 @@
     </div>
   </div>
 
+  <!-- Map -->
   <div class="map-container">
     <div id="map"></div>
   </div>
+
+  <!-- Floating Fit Bounds Button -->
+  <button id="fitBoundsBtn" class="fab primary" title="Fit all ships in view">🗺️</button>
 
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
   <script src="scripts/map.js"></script>

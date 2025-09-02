@@ -150,11 +150,11 @@
       
       const marker = L.marker(harbor.position, {icon}).addTo(map);
       const popupContent = `
-        <div style="text-align: center; min-width: 120px;">
-          <div style="font-size: 18px; margin-bottom: 8px;">${harbor.isDestination ? '🎯' : '⚓'}</div>
-          <div style="font-weight: 700; color: #1f2937; margin-bottom: 4px;">${harbor.name}</div>
-          <div style="color: #6b7280; font-size: 12px;">${harbor.country}</div>
-          ${harbor.isDestination ? '<div style="color: #8b5cf6; font-size: 11px; margin-top: 4px;">Destination Port</div>' : ''}
+        <div class="harbor-popup">
+          <div class="icon">${harbor.isDestination ? '🎯' : '⚓'}</div>
+          <div class="name">${harbor.name}</div>
+          <div class="country">${harbor.country}</div>
+          ${harbor.isDestination ? '<div class="destination">Destination Port</div>' : ''}
         </div>
       `;
       marker.bindPopup(popupContent);
@@ -183,16 +183,17 @@
       
       return [lat, lng];
     }
+    
+    const statusConfig = {
+      preparing: { color: '#f59e0b', class: 'ship-preparing', label: 'Preparing to Depart' },
+      sailing:   { color: '#22c55e', class: 'ship-sailing',   label: 'Currently Sailing' },
+      detained:  { color: '#ef4444', class: 'ship-detained',  label: 'Detained/Blocked' },
+      arrived:   { color: '#8b5cf6', class: 'ship-arrived',   label: 'Mission Complete' }
+    };
 
     // Function to get status color and styles
     function getStatusStyles(status) {
-      const styles = {
-        preparing: { color: '#f59e0b', bgColor: 'rgba(245, 158, 11, 0.1)', text: 'Preparing to Depart' },
-        sailing: { color: '#22c55e', bgColor: 'rgba(34, 197, 94, 0.1)', text: 'Currently Sailing' },
-        detained: { color: '#ef4444', bgColor: 'rgba(239, 68, 68, 0.1)', text: 'Detained/Blocked' },
-        arrived: { color: '#8b5cf6', bgColor: 'rgba(139, 92, 246, 0.1)', text: 'Mission Complete' }
-      };
-      return styles[status] || styles.preparing;
+      return statusConfig[status] || statusConfig.preparing;
     }
 
     // Add ships and routes
@@ -350,4 +351,22 @@
     // Enhanced mobile touch handling
     if ('ontouchstart' in window && map.tap) {
       map.tap.disable();
+    }
+
+    // Handle "Fit Bounds" FAB
+    const fitBoundsBtn = document.getElementById('fitBoundsBtn');
+    if (fitBoundsBtn) {
+      fitBoundsBtn.addEventListener('click', () => {
+        const group = new L.featureGroup([...shipMarkers, ...routeLines]);
+        map.fitBounds(group.getBounds().pad(0.1));
+      });
+    }
+
+    // Handle toggle of control panel
+    const togglePanelBtn = document.getElementById('toggleControlPanel');
+    const controlPanel = document.getElementById('controlPanel');
+    if (togglePanelBtn && controlPanel) {
+      togglePanelBtn.addEventListener('click', () => {
+        controlPanel.classList.toggle('collapsed');
+      });
     }

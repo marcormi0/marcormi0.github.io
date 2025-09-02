@@ -241,3 +241,123 @@
     @keyframes drawRoute {
       to { stroke-dashoffset: 0; }
     }
+
+    /* Back Navigation Button Styles */
+    .back-nav-button {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 6px 20px rgba(30, 60, 114, 0.3);
+      z-index: 1001;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.025em;
+      font-family: inherit;
+    }
+
+    .back-nav-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(30, 60, 114, 0.4);
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    }
+
+    .back-nav-button:active {
+      transform: translateY(-1px) scale(1.01);
+    }
+
+    .back-nav-button .nav-icon {
+      font-size: 1.2em;
+      font-weight: 700;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+    }
+
+    .back-nav-button .nav-text {
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .back-nav-button {
+        top: 12px;
+        left: 12px;
+        padding: 10px 14px;
+        font-size: 0.85rem;
+      }
+      
+      .control-panel {
+        top: 70px;
+        right: 12px;
+        max-width: calc(100vw - 24px);
+        left: 12px;
+        right: 12px;
+      }
+      
+      .header {
+        padding-top: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .back-nav-button .nav-text {
+        display: none;
+      }
+      
+      .back-nav-button {
+        padding: 12px;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+      }
+      
+      .back-nav-button .nav-icon {
+        font-size: 1.4em;
+      }
+      
+      .control-panel {
+        position: relative;
+        top: auto;
+        margin: 10px;
+        margin-bottom: -10px;
+      }
+    }
+
+    /* Enhanced mobile map experience */
+    @media (max-width: 768px) {
+      .map-container {
+        height: calc(100vh - 180px);
+      }
+    }
+
+    /* Add subtle animation to the back button */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .back-nav-button {
+      animation: slideInLeft 0.6s ease-out;
+    }

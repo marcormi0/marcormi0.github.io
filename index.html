@@ -9,6 +9,12 @@
 <body>
     <div class="container">
         <button id="languageBtn" onclick="toggleLanguage()">Italiano</button>
+        
+        <!-- Navigation to Map -->
+        <a href="flotilla_map_code.html" id="mapBtn" class="nav-button">
+            <span class="nav-icon">🗺️</span>
+            <span class="nav-text" data-en="View Live Map" data-it="Visualizza Mappa Live">Visualizza Mappa Live</span>
+        </a>
 
         <div id="globalSumudFlotilla">
             <div class="logo-container">
@@ -65,7 +71,7 @@
 
             <div class="past-live-section collapsed">
                 <h3 onclick="toggleCollapse(this)">
-                    🕑 PAST LIVE STREAMS
+                    🕓 PAST LIVE STREAMS
                     <span class="collapse-arrow" aria-hidden="true">▼</span>
                 </h3>
                 <div class="collapsible-content" style="display:none;">

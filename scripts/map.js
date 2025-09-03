@@ -212,20 +212,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     L.control.scale({ position: 'bottomleft', metric: true, imperial: false }).addTo(map);
 
-    const updateTime = new Date().toLocaleString();
-    const timestampControl = L.control({ position: 'topright' }); 
-    timestampControl.onAdd = function() {
-      const div = L.DomUtil.create('div', 'leaflet-control');
-      div.style.background = 'rgba(255, 255, 255, 0.9)';
-      div.style.padding = '5px 8px';
-      div.style.borderRadius = '6px';
-      div.style.fontSize = '11px';
-      div.style.color = '#666';
-      div.innerHTML = `Last updated: ${updateTime}`;
-      return div;
-    };
-    timestampControl.addTo(map);
-
     // Button handlers
     const fitBoundsBtn = document.getElementById('fitBoundsBtn');
     if (fitBoundsBtn) {

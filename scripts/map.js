@@ -1,4 +1,6 @@
-// Initialize map centered on Mediterranean
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Initialize map centered on Mediterranean
     const mapCenter = [36.0, 15.0]; 
     const mapZoom = 5;
 
@@ -22,121 +24,44 @@
       attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Enhanced harbor data with more details
+    // Harbor data
     const harbors = [
-      { 
-        name: "Barcelona", 
-        position: [41.3851, 2.1734],
-        country: "Spain"
-      },
-      { 
-        name: "Genoa", 
-        position: [44.4056, 8.9463],
-        country: "Italy"
-      },
-      { 
-        name: "Tunis", 
-        position: [36.8065, 10.1815],
-        country: "Tunisia"
-      },
-      { 
-        name: "Palermo", 
-        position: [38.1157, 13.3615],
-        country: "Sicily, Italy"
-      },
-      { 
-        name: "Gaza", 
-        position: [31.5012, 34.4669],
-        country: "Palestine",
-        isDestination: true
-      }
+      { name: "Barcelona", position: [41.3851, 2.1734], country: "Spain" },
+      { name: "Genoa", position: [44.4056, 8.9463], country: "Italy" },
+      { name: "Tunis", position: [36.8065, 10.1815], country: "Tunisia" },
+      { name: "Palermo", position: [38.1157, 13.3615], country: "Sicily, Italy" },
+      { name: "Gaza", position: [31.5012, 34.4669], country: "Palestine", isDestination: true }
     ];
 
-    // Enhanced ship data with status and progress
+    // Ship data
     const ships = [
-      { 
-        name: "Freedom Flotilla I", 
-        homePort: "Barcelona",
-        status: "sailing", // preparing, sailing, detained, arrived
-        progress: 30, // 0-100%
-        emoji: "🚢",
-        route: 0
-      },
-      { 
-        name: "Solidarity Ship", 
-        homePort: "Genoa",
-        status: "sailing",
-        progress: 30,
-        emoji: "⛵",
-        route: 1
-      },
-      { 
-        name: "Hope Vessel", 
-        homePort: "Tunis",
-        status: "preparing",
-        progress: 0,
-        emoji: "🛥️",
-        route: 2
-      },
-      { 
-        name: "Peace Carrier", 
-        homePort: "Palermo",
-        status: "preparing",
-        progress: 0,
-        emoji: "🚤",
-        route: 3
-      }
+      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 30, emoji: "🚢" },
+      { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 30, emoji: "⛵" },
+      { name: "Hope Vessel", homePort: "Tunis", status: "preparing", progress: 0, emoji: "🛥️" },
+      { name: "Peace Carrier", homePort: "Palermo", status: "preparing", progress: 0, emoji: "🚤" }
     ];
 
-    // Create more realistic routes following shipping lanes
-    const createRealisticRoute = (startPort, endPort) => {
-      const start = harbors.find(h => h.name === startPort).position;
-      const end = harbors.find(h => h.name === endPort).position;
+    // Create realistic routes
+    const createRealisticRoute = (startPortName) => {
+      const startHarbor = harbors.find(h => h.name === startPortName);
+      const endHarbor = harbors.find(h => h.name === "Gaza");
       
-      // Create waypoints that follow Mediterranean shipping lanes
+      // Safety check in case harbors are not found
+      if (!startHarbor || !endHarbor) {
+          return [[0,0], [0,0]]; // Return a default non-drawable route
+      }
+      
+      const start = startHarbor.position;
+      const end = endHarbor.position;
+      
       const routes = {
-        "Barcelona": [
-          [41.3851, 2.1734],   // Barcelona
-          [40.5, 3.5],         // Near Balearic Islands
-          [38.0, 8.0],         // Sardinia area
-          [36.5, 12.0],        // Sicily Strait
-          [35.0, 18.0],        // Crete area
-          [33.5, 25.0],        // Cyprus area
-          [32.5, 30.0],        // Approaching Eastern Med
-          [31.5012, 34.4669]   // Gaza
-        ],
-        "Genoa": [
-          [44.4056, 8.9463],   // Genoa
-          [42.0, 10.5],        // Corsica area
-          [39.5, 13.5],        // Sicily area
-          [37.0, 16.0],        // Southern Sicily
-          [35.2, 20.0],        // Crete area
-          [33.8, 26.0],        // Cyprus area
-          [32.2, 31.0],        // Eastern Med approach
-          [31.5012, 34.4669]   // Gaza
-        ],
-        "Tunis": [
-          [36.8065, 10.1815],  // Tunis
-          [37.0, 12.0],        // Tunisia coast
-          [36.8, 14.5],        // Sicily Strait
-          [35.5, 18.5],        // Central Med
-          [34.0, 23.0],        // Crete area
-          [33.0, 27.0],        // Cyprus area
-          [32.0, 32.0],        // Eastern Med
-          [31.5012, 34.4669]   // Gaza
-        ],
-        "Palermo": [
-          [38.1157, 13.3615],  // Palermo
-          [37.5, 15.0],        // Eastern Sicily
-          [36.0, 18.0],        // Central Med
-          [34.5, 22.0],        // Crete area
-          [33.2, 26.5],        // Cyprus area
-          [32.0, 31.5],        // Eastern Med approach
-          [31.5012, 34.4669]   // Gaza
-        ]
+        "Barcelona": [[41.3851, 2.1734], [40.5, 3.5], [38.0, 8.0], [36.5, 12.0], [35.0, 18.0], [33.5, 25.0], [32.5, 30.0], [31.5012, 34.4669]],
+        "Genoa": [[44.4056, 8.9463], [42.0, 10.5], [39.5, 13.5], [37.0, 16.0], [35.2, 20.0], [33.8, 26.0], [32.2, 31.0], [31.5012, 34.4669]],
+        "Tunis": [[36.8065, 10.1815], [37.0, 12.0], [36.8, 14.5], [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [32.0, 32.0], [31.5012, 34.4669]],
+        "Palermo": [[38.1157, 13.3615], [37.5, 15.0], [36.0, 18.0], [34.5, 22.0], [33.2, 26.5], [32.0, 31.5], [31.5012, 34.4669]]
       };
       
-      return routes[startPort] || [start, end];
+      return routes[startPortName] || [start, end];
     };
 
     // Add harbor markers
@@ -149,20 +74,19 @@
       });
       
       const marker = L.marker(harbor.position, {icon}).addTo(map);
-      const popupContent = `
+      marker.bindPopup(`
         <div class="harbor-popup">
           <div class="icon">${harbor.isDestination ? '🎯' : '⚓'}</div>
           <div class="name">${harbor.name}</div>
           <div class="country">${harbor.country}</div>
           ${harbor.isDestination ? '<div class="destination">Destination Port</div>' : ''}
         </div>
-      `;
-      marker.bindPopup(popupContent);
+      `);
     });
 
-    // Function to calculate position along route based on progress
+    // Calculate position along a route
     function calculateProgressPosition(route, progress) {
-      if (!route || route.length === 0) return [0, 0];
+      if (!route || route.length < 2) return [0, 0];
       if (progress <= 0) return route[0];
       if (progress >= 100) return route[route.length - 1];
       
@@ -171,12 +95,8 @@
       const segmentIndex = Math.floor(segmentProgress);
       const segmentRatio = segmentProgress - segmentIndex;
       
-      if (segmentIndex >= totalSegments) return route[route.length - 1];
-      
       const start = route[segmentIndex];
       const end = route[segmentIndex + 1];
-      
-      if (!start || !end) return route[0];
       
       const lat = start[0] + (end[0] - start[0]) * segmentRatio;
       const lng = start[1] + (end[1] - start[1]) * segmentRatio;
@@ -184,45 +104,44 @@
       return [lat, lng];
     }
     
+    // Configuration for ship statuses
     const statusConfig = {
-      preparing: { color: '#f59e0b', class: 'ship-preparing', label: 'Preparing to Depart' },
-      sailing:   { color: '#22c55e', class: 'ship-sailing',   label: 'Currently Sailing' },
-      detained:  { color: '#ef4444', class: 'ship-detained',  label: 'Detained/Blocked' },
-      arrived:   { color: '#8b5cf6', class: 'ship-arrived',   label: 'Mission Complete' }
+      preparing: { color: '#f59e0b', label: 'Preparing to Depart' },
+      sailing:   { color: '#22c55e', label: 'Currently Sailing' },
+      detained:  { color: '#ef4444', label: 'Detained/Blocked' },
+      arrived:   { color: '#8b5cf6', label: 'Mission Complete' }
     };
 
-    // Function to get status color and styles
     function getStatusStyles(status) {
       return statusConfig[status] || statusConfig.preparing;
     }
 
-    // Add ships and routes
+    // Add ship markers and route lines
     const shipMarkers = [];
     const routeLines = [];
 
-    ships.forEach((ship, index) => {
-      const homeHarbor = harbors.find(h => h.name === ship.homePort);
-      const route = createRealisticRoute(ship.homePort, "Gaza");
+    // REFINED: Removed unused 'index' parameter from the forEach loop.
+    ships.forEach(ship => {
+      // REFINED: Removed unused 'homeHarbor' variable.
+      const route = createRealisticRoute(ship.homePort);
       
-      // Calculate current position based on progress
       const calculatedPos = calculateProgressPosition(route, ship.progress);
-      const currentPosition = [parseFloat(calculatedPos[0]), parseFloat(calculatedPos[1])];
+      // REFINED: Removed redundant parseFloat calls.
+      const currentPosition = [calculatedPos[0], calculatedPos[1]];
       
-      // Create route line
-      const routeColor = ship.status === 'sailing' ? '#22c55e' : 
-                        ship.status === 'detained' ? '#ef4444' : 
-                        ship.status === 'arrived' ? '#8b5cf6' : '#94a3b8';
+      const statusStyles = getStatusStyles(ship.status);
       
       const routeLine = L.polyline(route, {
-        color: routeColor,
+        color: statusStyles.color,
         weight: 3,
         opacity: ship.status === 'sailing' ? 0.8 : 0.5,
         dashArray: ship.status === 'preparing' ? '10, 10' : null
       }).addTo(map);
       
-      // Add progress indicator for sailing ships
       if (ship.status === 'sailing' && ship.progress > 0) {
-        const progressRoute = route.slice(0, Math.ceil((ship.progress / 100) * (route.length - 1)) + 1);
+        // Calculate the number of points in the route to represent the progress
+        const progressPointIndex = Math.ceil((ship.progress / 100) * (route.length - 1));
+        const progressRoute = route.slice(0, progressPointIndex + 1);
         if (progressRoute.length > 1) {
           L.polyline(progressRoute, {
             color: '#22c55e',
@@ -234,8 +153,6 @@
       
       routeLines.push(routeLine);
       
-      // Create ship marker
-      const statusStyles = getStatusStyles(ship.status);
       const icon = L.divIcon({
         className: `ship-marker ship-${ship.status}`,
         html: ship.emoji,
@@ -245,28 +162,25 @@
       
       const shipMarker = L.marker(currentPosition, {icon}).addTo(map);
       
-      const popupContent = `
+      shipMarker.bindPopup(`
         <div class="ship-popup">
           <div class="ship-emoji">${ship.emoji}</div>
           <div class="ship-name">${ship.name}</div>
           <div style="font-size: 12px; color: #6b7280; margin: 4px 0;">From: ${ship.homePort}</div>
           ${ship.progress > 0 ? `<div style="font-size: 12px; color: #6b7280;">Progress: ${ship.progress}%</div>` : ''}
-          <div class="ship-status" style="background: ${statusStyles.bgColor}; color: ${statusStyles.color};">
-            ${statusStyles.text}
+          <div class="ship-status" style="background: ${statusStyles.color}; color: white;">
+            ${statusStyles.label}
           </div>
         </div>
-      `;
-      
-      shipMarker.bindPopup(popupContent);
+      `);
       shipMarkers.push(shipMarker);
       
-      // Add route popup
       routeLine.bindPopup(`
         <div style="text-align: center;">
           <div style="font-weight: 700; margin-bottom: 4px;">${ship.name} Route</div>
           <div style="font-size: 12px; color: #6b7280;">${ship.homePort} → Gaza</div>
           <div style="font-size: 11px; color: ${statusStyles.color}; margin-top: 4px;">
-            ${statusStyles.text}
+            ${statusStyles.label}
           </div>
         </div>
       `);
@@ -275,52 +189,32 @@
     // Update status panel
     function updateStatusPanel() {
       const grid = document.getElementById('shipStatusGrid');
-      grid.innerHTML = ships.map(ship => {
-        const styles = getStatusStyles(ship.status);
-        return `
-          <div class="ship-status">
-            <div class="status-dot status-${ship.status}"></div>
-            <div class="ship-info">
-              <div class="ship-name">${ship.emoji} ${ship.name}</div>
-              <div class="ship-progress">
-                ${ship.status === 'sailing' ? `${ship.progress}% to Gaza` : 
-                  ship.status === 'preparing' ? `At ${ship.homePort}` :
-                  ship.status === 'detained' ? 'Movement restricted' :
-                  'Mission completed'}
-              </div>
+      grid.innerHTML = ships.map(ship => `
+        <div class="ship-status">
+          <div class="status-dot status-${ship.status}"></div>
+          <div class="ship-info">
+            <div class="ship-name">${ship.emoji} ${ship.name}</div>
+            <div class="ship-progress">
+              ${ship.status === 'sailing' ? `${ship.progress}% to Gaza` : 
+                ship.status === 'preparing' ? `At ${ship.homePort}` :
+                ship.status === 'detained' ? 'Movement restricted' : 'Mission completed'}
             </div>
           </div>
-        `;
-      }).join('');
+        </div>
+      `).join('');
     }
-
-    // Initialize status panel
     updateStatusPanel();
 
-    // Add click handler to focus on ships
+    // Map interaction handlers
     map.on('popupopen', function(e) {
-      // Small delay to ensure popup is fully rendered
-      setTimeout(() => {
-        map.panTo(e.popup.getLatLng());
-      }, 100);
+      setTimeout(() => map.panTo(e.popup.getLatLng()), 100);
     });
 
-    // Mobile-friendly zoom controls
-    if (window.innerWidth <= 768) {
-      map.zoomControl.setPosition('bottomright');
-    }
+    L.control.scale({ position: 'bottomleft', metric: true, imperial: false }).addTo(map);
 
-    // Add scale control
-    L.control.scale({
-      position: 'bottomleft',
-      metric: true,
-      imperial: false
-    }).addTo(map);
-
-    // Add last updated timestamp
     const updateTime = new Date().toLocaleString();
-    const timestampControl = L.control({position: 'bottomright'});
-    timestampControl.onAdd = function(map) {
+    const timestampControl = L.control({ position: 'topright' }); 
+    timestampControl.onAdd = function() {
       const div = L.DomUtil.create('div', 'leaflet-control');
       div.style.background = 'rgba(255, 255, 255, 0.9)';
       div.style.padding = '5px 8px';
@@ -332,12 +226,7 @@
     };
     timestampControl.addTo(map);
 
-    // Enhanced mobile touch handling
-    if ('ontouchstart' in window && map.tap) {
-      map.tap.disable();
-    }
-
-    // Handle "Fit Bounds" FAB
+    // Button handlers
     const fitBoundsBtn = document.getElementById('fitBoundsBtn');
     if (fitBoundsBtn) {
       fitBoundsBtn.addEventListener('click', () => {
@@ -346,7 +235,6 @@
       });
     }
 
-    // Handle toggle of control panel
     const togglePanelBtn = document.getElementById('toggleControlPanel');
     const controlPanel = document.getElementById('controlPanel');
     if (togglePanelBtn && controlPanel) {
@@ -354,3 +242,4 @@
         controlPanel.classList.toggle('collapsed');
       });
     }
+});

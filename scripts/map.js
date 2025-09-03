@@ -58,7 +58,7 @@
         name: "Freedom Flotilla I", 
         homePort: "Barcelona",
         status: "sailing", // preparing, sailing, detained, arrived
-        progress: 10, // 0-100%
+        progress: 30, // 0-100%
         emoji: "🚢",
         route: 0
       },
@@ -66,7 +66,7 @@
         name: "Solidarity Ship", 
         homePort: "Genoa",
         status: "sailing",
-        progress: 10,
+        progress: 30,
         emoji: "⛵",
         route: 1
       },
@@ -316,22 +316,6 @@
       metric: true,
       imperial: false
     }).addTo(map);
-
-    // Custom button to fit all ships in view
-    const fitBoundsControl = L.control({position: 'topleft'});
-    fitBoundsControl.onAdd = function(map) {
-      const div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-      div.innerHTML = '<a href="#" style="background: white; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: #333; font-weight: bold;" title="Fit all ships in view">🗺️</a>';
-      
-      L.DomEvent.on(div, 'click', function(e) {
-        L.DomEvent.preventDefault(e);
-        const group = new L.featureGroup([...shipMarkers, ...routeLines]);
-        map.fitBounds(group.getBounds().pad(0.1));
-      });
-      
-      return div;
-    };
-    fitBoundsControl.addTo(map);
 
     // Add last updated timestamp
     const updateTime = new Date().toLocaleString();

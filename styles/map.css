@@ -1,471 +1,418 @@
 * {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
-      -webkit-tap-highlight-color: transparent;
-    }
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html, body { 
-      height: 100%; 
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 15px 20px;
-      text-align: center;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 1000;
-    }
+html, body { 
+  height: 100%; 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
 
-    .header h1 {
-      font-size: clamp(1.2rem, 4vw, 2rem);
-      color: #1e3c72;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1000;
+}
 
-    .header p {
-      color: #666;
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
-    }
+.header h1 {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  color: #1e3c72;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
 
-    /* Disclaimer styling */
-    .header .disclaimer {
-      color: #b91c1c; /* red tone for warning */
-      font-size: clamp(0.8rem, 2.5vw, 1rem);
-      font-weight: 600;
-      line-height: 1.4;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 6px 10px;
-      border-radius: 6px;
-      margin: 8px auto 0 auto;
-      max-width: 600px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
+.header p {
+  color: #666;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+}
 
+/* Disclaimer styling */
+.header .disclaimer {
+  color: #b91c1c; /* red tone for warning */
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
+  font-weight: 600;
+  line-height: 1.4;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin: 8px auto 0 auto;
+  max-width: 600px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
 
-    .map-container {
-      position: relative;
-      height: calc(100vh - 120px);
-      min-height: 400px;
-    }
+.map-container {
+  position: relative;
+  height: calc(100vh - 120px);
+  min-height: 400px;
+}
 
-    #map {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+#map {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
-    .control-panel {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      z-index: 1000;
-      max-width: 280px;
-      font-size: 14px;
-    }
+.control-panel {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 1000;
+  max-width: 280px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
 
-    .status-grid {
-      display: grid;
-      gap: 8px;
-      margin-top: 12px;
-    }
+.status-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
 
-    .ship-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.5);
-    }
+.ship-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+}
 
-    .status-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 
-    .status-sailing { background: #22c55e; }
-    .status-preparing { background: #f59e0b; }
-    .status-detained { background: #ef4444; }
-    .status-arrived { background: #8b5cf6; }
+.status-sailing { background: #22c55e; }
+.status-preparing { background: #f59e0b; }
+.status-detained { background: #ef4444; }
+.status-arrived { background: #8b5cf6; }
 
-    .ship-info {
-      flex-grow: 1;
-      font-size: 12px;
-    }
+.ship-info {
+  flex-grow: 1;
+  font-size: 12px;
+}
 
-    .ship-name {
-      font-weight: 600;
-      color: #1f2937;
-    }
+.ship-name {
+  font-weight: 600;
+  color: #1f2937;
+}
 
-    .ship-progress {
-      color: #6b7280;
-      margin-top: 2px;
-    }
+.ship-progress {
+  color: #6b7280;
+  margin-top: 2px;
+}
 
-    .legend {
-      margin-top: 15px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(0,0,0,0.1);
-    }
+.legend {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
 
-    .legend h4 {
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #374151;
-    }
+.legend h4 {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #374151;
+}
 
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 6px;
-      font-size: 11px;
-      color: #6b7280;
-    }
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: #6b7280;
+}
 
-    /* Mobile optimizations */
-    @media (max-width: 768px) {
-      .control-panel {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin: 10px;
-        max-width: none;
-        margin-bottom: -10px;
-      }
-      
-      .map-container {
-        height: calc(100vh - 200px);
-      }
-      
-      .header {
-        padding: 12px 15px;
-      }
-    }
+/* Custom popup styles */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
 
-    /* Custom popup styles */
-    .leaflet-popup-content-wrapper {
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-    }
+.leaflet-popup-content {
+  font-size: 14px;
+  padding: 5px;
+  line-height: 1.4;
+}
 
-    .ship-popup {
-      text-align: center;
-      padding: 5px;
-    }
+.ship-popup {
+  text-align: center;
+  padding: 5px;
+}
 
-    .ship-popup .ship-emoji {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
+.ship-popup .ship-emoji {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
 
-    .ship-popup .ship-name {
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 4px;
-    }
+.ship-popup .ship-name {
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
 
-    .ship-popup .ship-status {
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 6px;
-      display: inline-block;
-      margin-top: 4px;
-    }
+.ship-popup .ship-status {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 4px;
+}
 
-    .harbor-marker {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      border: 3px solid #fff;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
+.harbor-marker {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
 
-    .ship-marker {
-      border: 3px solid #fff;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-      transition: all 0.3s ease;
-    }
+.ship-marker {
+  border: 3px solid #fff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
 
-    .ship-sailing {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-    }
+.ship-sailing {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
 
-    .ship-preparing {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-    }
+.ship-preparing {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
 
-    .ship-detained {
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-    }
+.ship-detained {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
 
-    .ship-arrived {
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-    }
+.ship-arrived {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
-      50% { transform: scale(1.1); box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4); }
-      100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
-    }
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
+  50% { transform: scale(1.1); box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0,0,0,0.25); }
+}
 
-    /* Progress bar for routes */
-    .route-progress {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: drawRoute 3s ease-in-out forwards;
-    }
+/* Progress bar for routes */
+.route-progress {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawRoute 3s ease-in-out forwards;
+}
 
-    @keyframes drawRoute {
-      to { stroke-dashoffset: 0; }
-    }
+@keyframes drawRoute {
+  to { stroke-dashoffset: 0; }
+}
 
-    /* Back Navigation Button Styles */
-    .back-nav-button {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 18px;
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-      color: white;
-      border: none;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 6px 20px rgba(30, 60, 114, 0.3);
-      z-index: 1001;
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      letter-spacing: 0.025em;
-      font-family: inherit;
-    }
+/* Back Navigation Button Styles */
+.back-nav-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(30, 60, 114, 0.3);
+  z-index: 1001;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.025em;
+  font-family: inherit;
+  animation: slideInLeft 0.6s ease-out;
+}
 
-    .back-nav-button:hover {
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 30px rgba(30, 60, 114, 0.4);
-      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    }
+.back-nav-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(30, 60, 114, 0.4);
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+}
 
-    .back-nav-button:active {
-      transform: translateY(-1px) scale(1.01);
-    }
+.back-nav-button:active {
+  transform: translateY(-1px) scale(1.01);
+}
 
-    .back-nav-button .nav-icon {
-      font-size: 1.2em;
-      font-weight: 700;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-    }
+.back-nav-button .nav-icon {
+  font-size: 1.2em;
+  font-weight: 700;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
 
-    .back-nav-button .nav-text {
-      font-weight: 700;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 0.05em;
-    }
+.back-nav-button .nav-text {
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
 
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .back-nav-button {
-        top: 12px;
-        left: 12px;
-        padding: 10px 14px;
-        font-size: 0.85rem;
-      }
-      
-      .control-panel {
-        top: 70px;
-        right: 12px;
-        max-width: calc(100vw - 24px);
-        left: 12px;
-        right: 12px;
-      }
-      
-      .header {
-        padding-top: 60px;
-      }
-    }
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
 
-    @media (max-width: 480px) {
-      .back-nav-button .nav-text {
-        display: none;
-      }
-      
-      .back-nav-button {
-        padding: 12px;
-        border-radius: 50%;
-        width: 44px;
-        height: 44px;
-        justify-content: center;
-      }
-      
-      .back-nav-button .nav-icon {
-        font-size: 1.4em;
-      }
-      
-      .control-panel {
-        position: relative;
-        top: auto;
-        margin: 10px;
-        margin-bottom: -10px;
-      }
-    }
+/* Harbor popup styles */
+.harbor-popup {
+  text-align: center;
+  min-width: 120px;
+}
 
-    /* Enhanced mobile map experience */
-    @media (max-width: 768px) {
-      .map-container {
-        height: calc(100vh - 180px);
-      }
-    }
+.harbor-popup .icon {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
 
-    /* Add subtle animation to the back button */
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
+.harbor-popup .name {
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
 
-    .back-nav-button {
-      animation: slideInLeft 0.6s ease-out;
-    }
+.harbor-popup .country {
+  color: #6b7280;
+  font-size: 12px;
+}
 
-    /* Harbor popup styles */
-    .harbor-popup {
-      text-align: center;
-      min-width: 120px;
-    }
+.harbor-popup .destination {
+  color: #8b5cf6;
+  font-size: 11px;
+  margin-top: 4px;
+}
 
-    .harbor-popup .icon {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+/* Floating Action Buttons */
+.fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 1001;
+  transition: transform 0.2s ease;
+}
 
-    .harbor-popup .name {
-      font-weight: 700;
-      color: #1f2937;
-      margin-bottom: 4px;
-    }
+.fab:hover {
+  transform: scale(1.05);
+}
 
-    .harbor-popup .country {
-      color: #6b7280;
-      font-size: 12px;
-    }
+.fab.secondary {
+  bottom: 80px;
+  background: linear-gradient(135deg, #374151, #4b5563);
+}
 
-    .harbor-popup .destination {
-      color: #8b5cf6;
-      font-size: 11px;
-      margin-top: 4px;
-    }
+/* Collapsible Control Panel */
+.control-panel.collapsed {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+}
 
-    /* Floating Action Buttons */
-    .fab {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      z-index: 1001;
-      transition: transform 0.2s ease;
-    }
+/* === Consolidated Mobile Styles === */
+@media (max-width: 600px) {
+  .header {
+    padding: 12px 15px;
+    padding-top: 60px;
+  }
+  
+  .map-container {
+    /* Adjusted height for a better mobile layout */
+    height: calc(100vh - 180px);
+  }
+  
+  .control-panel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    max-width: 280px;
+    margin: 0;
+  }
+  
+  .back-nav-button {
+    top: 12px;
+    left: 12px;
+    padding: 12px;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+  }
 
-    .fab:hover {
-      transform: scale(1.05);
-    }
+  .back-nav-button .nav-text {
+    display: none; /* Hide text on small screens */
+  }
 
-    .fab.secondary {
-      bottom: 80px;
-      background: linear-gradient(135deg, #374151, #4b5563);
-    }
-
-    /* Collapsible Control Panel */
-    .control-panel.collapsed {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0;
-      margin: 0;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-
-    .control-panel {
-      transition: all 0.3s ease;
-    }
-
-    /* Popups: Slightly larger text for mobile */
-    .leaflet-popup-content {
-      font-size: 14px;
-      padding: 5px;
-      line-height: 1.4;
-    }
-
-    /* Adjust FAB position for very small screens */
-    @media (max-width: 480px) {
-      .fab {
-        bottom: 15px;
-        right: 15px;
-        width: 44px;
-        height: 44px;
-        font-size: 1.2rem;
-      }
-      .fab.secondary {
-        bottom: 70px;
-      }
-    }
+  .back-nav-button .nav-icon {
+    font-size: 1.2em;
+  }
+  
+  .fab {
+    bottom: 15px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  
+  .fab.secondary {
+    bottom: 70px;
+  }
+}

@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ship data
     const ships = [
-      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 30, emoji: "🚢" },
+      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 20, emoji: "🚢" },
       { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 30, emoji: "⛵" },
       { name: "Hope Vessel", homePort: "Tunis", status: "preparing", progress: 0, emoji: "🛥️" },
       { name: "Peace Carrier", homePort: "Palermo", status: "preparing", progress: 0, emoji: "🚤" }
@@ -55,9 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const end = endHarbor.position;
       
       const routes = {
-        "Barcelona": [[41.3851, 2.1734], [40.5, 3.5], [38.0, 8.0], [36.5, 12.0], [35.0, 18.0], [33.5, 25.0], [32.5, 30.0], [31.5012, 34.4669]],
-        "Genoa": [[44.4056, 8.9463], [42.0, 10.5], [39.5, 13.5], [37.0, 16.0], [35.2, 20.0], [33.8, 26.0], [32.2, 31.0], [31.5012, 34.4669]],
-        "Tunis": [[36.8065, 10.1815], [37.0, 12.0], [36.8, 14.5], [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [32.0, 32.0], [31.5012, 34.4669]],
+        "Barcelona": [
+          [41.3851, 2.1734], [40.03116, 4.27540], [39.8797, 4.3623], [37.764, 9.668], [37.21447, 10.37624], [36.79884, 10.36388],
+          [36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [36.0, 11.5], [35.3, 14.0], [34.5, 18.0], [33.5, 23.0], [32.5, 27.0], [31.5012, 34.4669]],
+        "Genoa": [[44.4056, 8.9463], [42.0, 10.5], [39.5, 13.5], [37.0, 16.0], [35.2, 20.0], [33.8, 26.0], [32.2, 31.0], 
+        [31.5012, 34.4669]],
+        "Tunis": [[36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [37.0, 12.0], [36.76, 14.5], [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [32.0, 32.0], 
+        [31.5012, 34.4669]],
         "Palermo": [[38.1157, 13.3615], [37.5, 15.0], [36.0, 18.0], [34.5, 22.0], [33.2, 26.5], [32.0, 31.5], [31.5012, 34.4669]]
       };
       
@@ -228,4 +232,33 @@ document.addEventListener('DOMContentLoaded', function() {
         controlPanel.classList.toggle('collapsed');
       });
     }
+
+    // Create a control to display coordinates
+    const coordsControl = L.control({ position: 'bottomleft' });
+
+    coordsControl.onAdd = function (map) {
+      this._div = L.DomUtil.create('div', 'coords-control');
+      this.update();
+      return this._div;
+    };
+
+    // Method to update control with lat/lng or empty if no event
+    coordsControl.update = function (latlng) {
+      this._div.innerHTML = latlng
+        ? `Lat: ${latlng.lat.toFixed(4)}, Lng: ${latlng.lng.toFixed(4)}`
+        : 'Hover over map';
+    };
+
+    coordsControl.addTo(map);
+
+    // Update coordinates on mouse move
+    map.on('mousemove', function (e) {
+      coordsControl.update(e.latlng);
+    });
+
+    // Clear coordinates when mouse leaves the map
+    map.on('mouseout', function () {
+      coordsControl.update();
+    });
+
 });

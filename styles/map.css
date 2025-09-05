@@ -390,19 +390,11 @@ html, body {
   .back-nav-button {
     top: 12px;
     left: 12px;
-    padding: 12px;
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    justify-content: center;
-  }
-
-  .back-nav-button .nav-text {
-    display: none; /* Hide text on small screens */
+    padding: 8px;
   }
 
   .back-nav-button .nav-icon {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
   
   .fab {

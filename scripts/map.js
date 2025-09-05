@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
       { name: "Barcelona", position: [41.3851, 2.1734], country: "Spain" },
       { name: "Genoa", position: [44.4056, 8.9463], country: "Italy" },
       { name: "Tunis", position: [36.8065, 10.1815], country: "Tunisia" },
-      { name: "Palermo", position: [38.1157, 13.3615], country: "Sicily, Italy" },
-      { name: "Gaza", position: [31.5012, 34.4669], country: "Palestine", isDestination: true }
+      { name: "Catania", position: [37.4997, 15.0995], country: "Sicily, Italy" },
+      { name: "Gaza", position: [31.5105, 34.4069], country: "Palestine", isDestination: true }
     ];
 
     // Ship data
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 20, emoji: "🚢" },
       { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 30, emoji: "⛵" },
       { name: "Hope Vessel", homePort: "Tunis", status: "preparing", progress: 0, emoji: "🛥️" },
-      { name: "Peace Carrier", homePort: "Palermo", status: "preparing", progress: 0, emoji: "🚤" }
+      { name: "Peace Carrier", homePort: "Catania", status: "preparing", progress: 0, emoji: "🚤" }
     ];
 
     // Create realistic routes
@@ -56,13 +56,15 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const routes = {
         "Barcelona": [
-          [41.3851, 2.1734], [40.03116, 4.27540], [39.8797, 4.3623], [37.764, 9.668], [37.21447, 10.37624], [36.79884, 10.36388],
-          [36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [36.0, 11.5], [35.3, 14.0], [34.5, 18.0], [33.5, 23.0], [32.5, 27.0], [31.5012, 34.4669]],
-        "Genoa": [[44.4056, 8.9463], [42.0, 10.5], [39.5, 13.5], [37.0, 16.0], [35.2, 20.0], [33.8, 26.0], [32.2, 31.0], 
-        [31.5012, 34.4669]],
+          [41.3851, 2.1734], [40.03116, 4.27540], [39.8797, 4.3623], [37.764, 9.668], [37.21447, 10.37624], 
+          [36.79884, 10.36388], [36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [37.0, 12.0], [36.76, 14.5], 
+          [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [31.5105, 34.4069]],
+        "Genoa": [[44.4056, 8.9463], [42.0, 10.5], [39.5, 13.5], [38.28, 15.68], [38.23, 15.61], [37.49, 15.11], 
+        [37.0, 16.0], [35.2, 20.0], [33.8, 26.0], [31.5105, 34.4069], 
+        [31.5105, 34.4069]],
         "Tunis": [[36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [37.0, 12.0], [36.76, 14.5], [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [32.0, 32.0], 
-        [31.5012, 34.4669]],
-        "Palermo": [[38.1157, 13.3615], [37.5, 15.0], [36.0, 18.0], [34.5, 22.0], [33.2, 26.5], [32.0, 31.5], [31.5012, 34.4669]]
+        [31.5105, 34.4069]],
+        "Catania": [[37.4997, 15.0995], [36.0, 18.0], [34.5, 22.0], [33.2, 26.5], [32.0, 31.5], [31.5105, 34.4069]]
       };
       
       return routes[startPortName] || [start, end];

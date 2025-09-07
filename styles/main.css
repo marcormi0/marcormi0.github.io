@@ -892,6 +892,7 @@
     }
 
     .timeline-date {
+        padding: 5px;
         flex-shrink: 0;
         width: 80px;
         text-align: right;
@@ -948,22 +949,6 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    @media (max-width: 600px) {
-        .timeline-container::before { left: 20px; }
-        .timeline-event::before { left: 12px; }
-        .timeline-date {
-            width: auto;
-            text-align: left;
-            margin-right: 0;
-            margin-bottom: 10px;
-            position: absolute;
-            left: 45px;
-            top: 2px;
-            font-size: 0.9em;
-        }
-        .timeline-event { flex-direction: column; }
-        .timeline-content { margin-left: 45px; }
-    }
 
     /* --- Modal Styles --- */
     .modal-overlay {

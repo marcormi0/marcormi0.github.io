@@ -10,18 +10,35 @@
     <div class="container">
         <button id="languageBtn" onclick="toggleLanguage()">Italiano</button>
         
-        <!-- Navigation to Map -->
         <a href="flotilla_map_code.html" id="mapBtn" class="nav-button">
             <span class="nav-icon">🗺️</span>
             <span class="nav-text" data-en="Flotilla Map" data-it="Mappa Flotilla">Mappa Flotilla</span>
         </a>
 
         <div id="globalSumudFlotilla">
+            
             <div class="logo-container">
                 <a href="https://globalsumudflotilla.org/" target="_blank" rel="noopener" aria-label="global-sumud-flotilla">
                     <img src="Global_Sumud_Flotilla_logo.png" alt="Global Sumud Flotilla Logo">
                 </a>
             </div>
+
+            <div class="flotilla-info">
+            <p data-en="⚠️ This is not an official channel of the Global Sumud Flotilla. For authoritative information, please refer to <a href='https://globalsumudflotilla.org/' target='_blank'>globalsumudflotilla.org</a>." 
+            data-it="⚠️ Questo non è un canale ufficiale della Flottiglia Globale Sumud. Per informazioni autorevoli, fare riferimento a <a href='https://globalsumudflotilla.org/' target='_blank'>globalsumudflotilla.org</a>.">
+            ⚠️ This is not an official channel of the Global Sumud Flotilla. For authoritative information, please refer to <a href="https://globalsumudflotilla.org/" target="_blank">globalsumudflotilla.org</a>.
+            </p>
+            <p data-en="This website’s sole purpose is to raise awareness about the movement by gathering resources, sharing live events, and mapping the routes of the flotilla."
+            data-it="L'unico scopo di questo sito web è quello di sensibilizzare l'opinione pubblica sul movimento raccogliendo risorse, condividendo eventi in diretta e mappando le rotte della flottiglia.">
+            This website’s sole purpose is to raise awareness about the movement by gathering resources, sharing live events, and mapping the routes of the flotilla.
+            </p>
+<!-- <p data-en="⚠️ Security concerns mean some details may be released shortly before departure" data-it="⚠️ Per motivi di sicurezza alcuni dettagli potrebbero essere rilasciati poco prima della partenza">⚠️ Per motivi di sicurezza alcuni dettagli potrebbero essere rilasciati poco prima della partenza</p>
+            <div class="status-badges">
+                <span class="date-confirmed" data-en="Confirmed" data-it="Confermato">Confermato</span>
+                <span class="date-tentative" data-en="Not Confirmed" data-it="Non Confermato">Non Confermato</span>
+            </div> -->
+        </div>
+        
             <p class="subtitle" data-en="The largest civilian maritime mission to Gaza in history" 
             data-it="La più grande missione marittima civile verso Gaza della storia">
             La più grande missione marittima civile verso Gaza della storia</p>
@@ -34,14 +51,6 @@
 
             <p class="subtitle2" data-en="Global Sumud Flotilla is part of this legacy, and sails for freedom, dignity, and justice in Palestine."  
             data-it="La GSF fa parte di questa eredità, e naviga per la libertà, la dignità e la giustizia in Palestina."></p>
-            
-            <div class="flotilla-info">
-                <p data-en="⚠️ Security concerns mean some details may be released shortly before departure" data-it="⚠️ Per motivi di sicurezza alcuni dettagli potrebbero essere rilasciati poco prima della partenza">⚠️ Per motivi di sicurezza alcuni dettagli potrebbero essere rilasciati poco prima della partenza</p>
-                <div class="status-badges">
-                    <span class="date-confirmed" data-en="Confirmed" data-it="Confermato">Confermato</span>
-                    <span class="date-tentative" data-en="Not Confirmed" data-it="Non Confermato">Non Confermato</span>
-                </div>
-            </div>
 
             <div class="live-section">
                 <h3 data-en="🔴 LIVE STREAM" data-it="🔴 IN DIRETTA ORA" onclick="toggleCollapse(this)">
@@ -51,26 +60,13 @@
                 <div class="collapsible-content">
                     <div class="livestream-links">
                         <ul>
-                            
-                            <!-- 
-                            <li>
-                                <a href="https://www.youtube.com/live/x6YXHAfqlqY?si=6aVZ304LMf9sHzbZ" target="_blank" rel="noopener">
-                                    🚢 <strong data-en="DEPARTURE FROM BARCELONA HARBOR" data-it="PARTENZA PORTO DI BARCELLONA">PARTENZA PORTO DI BARCELLONA</strong> 
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.youtube.com/watch?v=01O_fn5GB4Y&ab_channel=CorrieredellaSera" target="_blank" rel="noopener">
-                                    🚢 <strong data-en="DEPARTURE FROM GENOA HARBOR" data-it="PARTENZA PORTO DI GENOVA">PARTENZA PORTO DI GENOVA</strong> 
-                                </a>
-                            </li> -->
-                        </ul>
+                            </ul>
                     </div>
                 </div>
             </div>
 
             <div class="past-live-section collapsed">
-                <h3 onclick="toggleCollapse(this)">
-                    🕓 PAST LIVE STREAMS
+                <h3 data-en="🕓 PAST LIVE STREAMS" data-it="🕓 DIRETTE CONCLUSE" onclick="toggleCollapse(this)">
                     <span class="collapse-arrow" aria-hidden="true">▼</span>
                 </h3>
                 <div class="collapsible-content" style="display:none;">
@@ -100,6 +96,58 @@
                     </div>
                 </div>
             </div>
+
+        <div class="events-timeline-section collapsed">
+            <h3 onclick="toggleCollapse(this)">
+                <span data-en="📅 Events Timeline" data-it="📅 Cronologia Eventi"></span>
+                <span class="collapse-arrow" aria-hidden="true">▼</span>
+            </h3>
+            <div class="collapsible-content" style="display: none;">
+                <div class="timeline-container">
+                    <div class="timeline-event">
+                        <div class="timeline-date" data-en="Aug 31" data-it="31 Ago"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title" data-en="LAUNCH EVENTS & PRESS CONFERENCE IN BARCELONA" data-it="Preparativi Finali"></h4>
+                            <p class="event-text" data-en="Crews in Barcelona and Genoa are making the final preparations for departure. Over 500 tons of humanitarian aid have been loaded onto the vessels."
+                            data-it="Gli equipaggi di Barcellona e Genova stanno completando gli ultimi preparativi per la partenza. Oltre 500 tonnellate di aiuti umanitari sono state caricate sulle navi."></p>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-date" data-en="Sep 1" data-it="1 Set"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title" data-en="Departure Delayed" data-it="Partenza Rinviata"></h4>
+                            <p class="event-text" data-en="An international press conference was held to announce the final departure dates and mission objectives."
+                            data-it="Si è tenuta una conferenza stampa internazionale per annunciare le date di partenza definitive e gli obiettivi della missione."></p>
+                            <a href="#" class="file-link" onclick="openFileModal('images/GSF_Press_Release_250901.png')">
+                                🖼️ <span data-en="Press Statement (PNG)" data-it="Comunicato Stampa (PNG)"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-date" data-en="Sep 2" data-it="2 Set"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title" data-en="Weather Conditions" data-it="Condizioni Atmosferiche"></h4>
+                            <p class="event-text" data-en="Due to extreme weather conditions last night, five of our smaller vessels turned back for safety reasons."
+                            data-it="A causa delle condizioni meteorologiche estreme della scorsa notte, cinque delle nostre imbarcazioni più piccole hanno fatto ritorno per motivi di sicurezza."></p>
+                            <a href="#" class="file-link" onclick="openFileModal('docs/Press_Statement_GSF_250902.pdf')">
+                                📄 <span data-en="Press Statement (PDF)" data-it="Comunicato Stampa (PDF)"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="timeline-event">
+                        <div class="timeline-date" data-en="Sep 2" data-it="2 Set"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title" data-en="Joint Statement" data-it="Dichiarazione Congiunta"></h4>
+                            <p class="event-text" data-en="A call for immediate action to ensure humanitarian access to Gaza and to end the genocide of the Palestinian people."
+                            data-it="Un appello all'azione immediata per garantire l'accesso umanitario a Gaza e porre fine al genocidio del popolo palestinese."></p>
+                            <a href="#" class="file-link" onclick="openFileModal('docs/Joint_Statement.pdf')">
+                                📄 <span data-en="Joint Statement (PDF)" data-it="Dichiarazione Congiunta (PDF)"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
             
             <ul class="location-list">
                 <li class="location-card">
@@ -108,8 +156,8 @@
                         <span class="location-date confirmed" data-en="August 31, 2025" data-it="31 Agosto 2025">31 Agosto 2025</span>
                     </div>
                     
-                    <p class="location-description" data-en="A thousand people gathered on Wednesday evening in Barcelona for a demonstration in support of the Palestinian people, which provided the backdrop for the announcement of the departure of the Global Sumud Flotilla." 
-                        data-it="Un migliaio di persone si sono riunite mercoledì sera a Barcellona in una manifestazione a sostegno del popolo palestinese, che ha fatto da cornice all'annuncio della partenza della Global Sumud Flotilla.">
+                    <p class="location-description" data-en="Thousands of people gathered on Wednesday evening in Barcelona for a demonstration in support of the Palestinian people, which provided the backdrop for the announcement of the departure of the Global Sumud Flotilla." 
+                        data-it="Migliaia di persone si sono riunite mercoledì sera a Barcellona in una manifestazione a sostegno del popolo palestinese, che ha fatto da cornice all'annuncio della partenza della Global Sumud Flotilla.">
                         Un migliaio di persone si sono riunite mercoledì sera a Barcellona in una manifestazione a sostegno del popolo palestinese, che ha fatto da cornice all'annuncio della partenza della Global Sumud Flotilla.</p>
                     
                     <div class="divider"></div>
@@ -233,6 +281,13 @@
         </div>
     </div>
 
+    <div id="fileModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeFileModal()">&times;</span>
+            <img id="modalImage" src="" alt="Modal Image" style="display:none;">
+            <iframe id="modalPdf" src="" style="display:none;" frameborder="0"></iframe>
+        </div>
+    </div>
     <script src="scripts/main.js"></script>
 </body>
 </html>

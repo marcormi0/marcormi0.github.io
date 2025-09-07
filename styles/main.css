@@ -949,6 +949,38 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
+    @media (max-width: 768px) {
+    .timeline-event {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        padding-left: 32px; /* Make space for the dot and line */
+    }
+    .timeline-event::before {
+        left: 0;      /* Move dot to the far left */
+        top: 10px;    /* Align with date */
+    }
+    .timeline-date {
+        width: auto;
+        margin-right: 0;
+        text-align: left;
+        margin-bottom: 6px;
+        position: relative;
+        z-index: 2;   /* Ensure it's above the dot */
+    }
+    }
+    @media (max-width: 480px) {
+    .timeline-event {
+        padding-left: 22px;
+    }
+    .timeline-event::before {
+        width: 10px;
+        height: 10px;
+        top: 8px;
+    }
+    }
+
+
 
     /* --- Modal Styles --- */
     .modal-overlay {

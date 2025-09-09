@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ship data
     const ships = [
-      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 23, emoji: "🚢" },
-      { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 30, emoji: "⛵" },
+      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 35, emoji: "🚢" },
+      { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 50, emoji: "⛵" },
       { name: "Hope Vessel", homePort: "Tunis", status: "preparing", progress: 0, emoji: "🛥️" },
       { name: "Peace Carrier", homePort: "Catania", status: "preparing", progress: 0, emoji: "🚤" }
     ];

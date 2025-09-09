@@ -50,24 +50,32 @@
      * @param {string} filePath - The path to the image or PDF file.
      */
     function openFileModal(filePath) {
-        event.preventDefault(); // Prevents the default anchor tag behavior
+        event.preventDefault(); 
         const modal = document.getElementById('fileModal');
         const imgElement = document.getElementById('modalImage');
         const pdfElement = document.getElementById('modalPdf');
+        // Get the new video element
+        const videoElement = document.getElementById('modalVideo'); 
 
         const fileExtension = filePath.split('.').pop().toLowerCase();
+        
+        // Hide all elements first
+        imgElement.style.display = 'none';
+        pdfElement.style.display = 'none';
+        videoElement.style.display = 'none';
 
         if (['png', 'jpg', 'jpeg', 'gif', 'webp'].includes(fileExtension)) {
             imgElement.src = filePath;
             imgElement.style.display = 'block';
-            pdfElement.style.display = 'none';
         } else if (fileExtension === 'pdf') {
             pdfElement.src = filePath;
             pdfElement.style.display = 'block';
-            imgElement.style.display = 'none';
+        } else if (fileExtension === 'mp4') { // Add this 'else if' block
+            videoElement.src = filePath;
+            videoElement.style.display = 'block';
         } else {
             console.error('Unsupported file type:', fileExtension);
-            return; // Don't open modal for unsupported files
+            return;
         }
 
         modal.style.display = 'flex';
@@ -80,11 +88,16 @@
         const modal = document.getElementById('fileModal');
         const imgElement = document.getElementById('modalImage');
         const pdfElement = document.getElementById('modalPdf');
+        // Get the new video element
+        const videoElement = document.getElementById('modalVideo');
 
         modal.style.display = 'none';
-        // Clear the src to stop loading/playing content in the background
+        
+        // Clear src and stop content
         imgElement.src = '';
         pdfElement.src = '';
+        videoElement.pause(); // Stop the video
+        videoElement.src = ''; // Clear the source
     }
 
     // Add event listeners when the page content is loaded

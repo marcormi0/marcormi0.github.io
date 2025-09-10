@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { name: "Barcelona", position: [41.3851, 2.1734], country: "Spain" },
       { name: "Genoa", position: [44.4056, 8.9463], country: "Italy" },
       { name: "Tunis", position: [36.8065, 10.1815], country: "Tunisia" },
-      { name: "Catania", position: [37.4997, 15.0995], country: "Sicily, Italy" },
+      { name: "Siracusa", position: [37.0668, 15.2907], country: "Sicily, Italy" },
       { name: "Gaza", position: [31.5105, 34.4069], country: "Palestine", isDestination: true }
     ];
 
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
       { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 35, emoji: "🚢" },
       { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 50, emoji: "⛵" },
       { name: "Hope Vessel", homePort: "Tunis", status: "preparing", progress: 0, emoji: "🛥️" },
-      { name: "Peace Carrier", homePort: "Catania", status: "preparing", progress: 0, emoji: "🚤" }
+      { name: "Peace Carrier", homePort: "Siracusa", status: "preparing", progress: 0, emoji: "🚤" }
     ];
 
     // Create realistic routes
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
         [31.5105, 34.4069]],
         "Tunis": [[36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [37.0, 12.0], [36.76, 14.5], [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [32.0, 32.0], 
         [31.5105, 34.4069]],
-        "Catania": [[37.4997, 15.0995], [36.0, 18.0], [34.5, 22.0], [33.2, 26.5], [32.0, 31.5], [31.5105, 34.4069]]
+        "Siracusa": [[37.0668, 15.2907], [36.0, 18.0], [34.5, 22.0], [33.2, 26.5], [32.0, 31.5], [31.5105, 34.4069]]
       };
       
       return routes[startPortName] || [start, end];

@@ -1036,3 +1036,16 @@
         width: 80vw;
         height: 85vh;
     }
+
+    .more-text {
+        /* This class will hold the initially hidden text */
+    }
+
+    .read-more-btn {
+        color: var(--primary);
+        cursor: pointer;
+        font-weight: 600;
+        text-decoration: underline;
+        margin-left: 5px; /* Adds a little space before the button */
+        white-space: nowrap; /* Prevents the button from wrapping to a new line */
+    }

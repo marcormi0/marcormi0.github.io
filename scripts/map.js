@@ -35,9 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ship data
     const ships = [
-      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 50, emoji: "🚢" },
+      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 65, emoji: "🚢" },
       { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 55, emoji: "⛵" },
-      { name: "Hope Vessel", homePort: "Tunis", status: "sailing", progress: 5, emoji: "🛥️" },
+      { name: "Hope Vessel", homePort: "Tunis", status: "sailing", progress: 25, emoji: "🛥️" },
       { name: "Peace Carrier", homePort: "Siracusa", status: "sailing", progress: 3, emoji: "🚤" }
     ];
 
@@ -57,12 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const routes = {
         "Barcelona": [
           [41.3851, 2.1734], [40.03116, 4.27540], [39.8797, 4.3623], [37.764, 9.668], [37.21447, 10.37624], 
-          [36.79884, 10.36388], [36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [37.0, 12.0], [36.76, 14.5], 
+          [36.79884, 10.36388], [36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [37.10, 11.05], [37.0, 12.0], [36.76, 14.5], 
           [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [31.5105, 34.4069]],
         "Genoa": [[44.4056, 8.9463], [42.0, 10.5], [39.5, 13.5], [38.28, 15.68], [38.23, 15.61], [37.49, 15.11], 
         [37.0, 16.0], [35.2, 20.0], [33.8, 26.0], [31.5105, 34.4069], 
         [31.5105, 34.4069]],
-        "Tunis": [[36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [37.0, 12.0], [36.76, 14.5], [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [32.0, 32.0], 
+        "Tunis": [[36.8099  , 10.3], [36.79, 10.35], [37.09, 10.69], [37.10, 11.05], [37.0, 12.0], [36.76, 14.5], [35.5, 18.5], [34.0, 23.0], [33.0, 27.0], [32.0, 32.0], 
         [31.5105, 34.4069]],
         "Siracusa": [[37.0668, 15.2907], [36.0, 18.0], [34.5, 22.0], [33.2, 26.5], [32.0, 31.5], [31.5105, 34.4069]]
       };

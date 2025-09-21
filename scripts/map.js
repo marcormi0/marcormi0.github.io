@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ship data
     const ships = [
-      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 65, emoji: "🚢" },
-      { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 55, emoji: "⛵" },
-      { name: "Hope Vessel", homePort: "Tunis", status: "sailing", progress: 25, emoji: "🛥️" },
-      { name: "Peace Carrier", homePort: "Siracusa", status: "sailing", progress: 3, emoji: "🚤" }
+      { name: "Freedom Flotilla I", homePort: "Barcelona", status: "sailing", progress: 80, emoji: "🚢" },
+      { name: "Solidarity Ship", homePort: "Genoa", status: "sailing", progress: 70, emoji: "⛵" },
+      { name: "Hope Vessel", homePort: "Tunis", status: "sailing", progress: 65, emoji: "🛥️" },
+      { name: "Peace Carrier", homePort: "Siracusa", status: "sailing", progress: 33, emoji: "🚤" }
     ];
 
     // Create realistic routes
